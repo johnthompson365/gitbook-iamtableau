@@ -31,11 +31,11 @@ There are articles to configure the authentication steps. The Microsoft ones are
 [Configure SAML with Azure Active Directory](https://help.tableau.com/current/online/en-us/saml_config_azure_ad.htm) \(Tableau Online\)  
 [Configure Server-Wide SAML](https://help.tableau.com/current/server/en-us/config_saml.htm) \(Tableau Server\)
 
-## SAML Attributes
+## Tableau Online SAML
 
 As part of the SAML authentication flow attributes are passed between the IdP \(Azure\) and the Service Provider \(Tableau\). Getting them right is key to a successful SSO.
 
-### Tableau Online
+### Configuration
 
 There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for First name and Last name or Full name. ****If they are not provided in the authN flow then the email address is used, so are actually optional.
 
@@ -114,7 +114,9 @@ You can choose to map `mail` or`userPrincipalName` as the `Email` in TOL. Howeve
 
 ![Workbook subscriptions](.gitbook/assets/image%20%2869%29.png)
 
-**Display Name:** Enter an assertion name for either the first name and last name, or for the full name, depending on how the IdP stores this information. Tableau Online uses these attributes to set the display name.
+### **Display Name**
+
+Enter an assertion name for either the first name and last name, or for the full name, depending on how the IdP stores this information. Tableau Online uses these attributes to set the display name.
 
 * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`
 * `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`
@@ -140,23 +142,18 @@ By deleting the 'name' claim URI from the setting in Tableau Online \(shown belo
 
 ![No claims defined for Email attribute](.gitbook/assets/image%20%2875%29.png)
 
-You can then login successfully by only relying on the name identifier.
+You can then login successfully by only relying on the name identifier, but you won't get any useful information like First Name and Surname.
 
 ### The Recommended!
 
-I am primarily interested in Enterprise organizations so consumer accounts are less of a consideration. In Azure AD and Microsoft 365 the `userPrincipalName` \(UPN\) is king, it is the attribute that is used to sign in to Office 365 services \(even though sometimes it asked for email address it really meant UPN!\). Many organizations are likely to want to map that to the username in TOL as they know it is likely to change less than the email address.  
+I am primarily interested in Enterprise organizations so consumer accounts are less of a consideration. In Azure AD and Microsoft 365 the `userPrincipalName` \(UPN\) is the attribute that is used to sign in to Office 365 services. Many organizations are likely to want to map that to the username in TOL as they know it is likely to change less than the email address.   
   
+So the best guidance is to ask:
 
+* Is the UPN the same value as the users working email account, to receive subscriptions?
+* Is it likely to change? and if so are you comfortable with signing in with an account that is different? 
 
-So the best guidance is to keep to the 3 core attributes:
-
-
-
-
-
-[Troubleshoot SAML](https://help.tableau.com/current/online/en-us/saml_trouble.htm)
-
-## User Experience - Tableau Online
+### User Experience
 
 The Azure AD Tableau Online app always uses a SP-initiated flow. This means that the user experience involves a number of redirects. There are some configuration options that can smooth this experience.
 
@@ -168,6 +165,8 @@ You should advise your users to always check the **Remember me** option when sig
 
 If you select 'Remember me'
 
+
+
 Login URL workaround
 
 [https://kb.tableau.com/articles/issue/prompted-to-enter-credentials-when-accessing-tableau-online-configured-with-saml](https://kb.tableau.com/articles/issue/prompted-to-enter-credentials-when-accessing-tableau-online-configured-with-saml)
@@ -175,12 +174,4 @@ Login URL workaround
 SP-initiated -
 
 Message: AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '[https://sso.online.tableau.com/public/sp/metadata?alias=4e828bd1-](https://sso.online.tableau.com/public/sp/metadata?alias=4e828bd1-df88-4648-ab4e-743eadabed2a)xxx'.
-
-## User provisioning
-
-{% embed url="https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial" caption="Follow this." %}
-
-In the context of automatic user provisioning, only the users or groups that were assigned to an application in Azure AD are synchronized.
-
-![](.gitbook/assets/image%20%2871%29.png)
 
