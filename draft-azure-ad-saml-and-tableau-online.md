@@ -18,7 +18,7 @@ Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drink
 
 {% embed url="https://azure.microsoft.com/en-us/trial/get-started-active-directory/" %}
 
-For 30 day access to AD premium, which would include Enterprise Applications and SAML you can signup here :points up:! 
+For 30 day access to AD premium, which would include Enterprise Applications and SAML you can signup above! 
 
 ## Documentation
 
@@ -37,7 +37,7 @@ As part of the SAML authentication flow attributes are passed between the IdP \(
 
 ### Tableau Online
 
-There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. **\*\*The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for** First name **and** Last name **or** Full name**. \*\***If they are not provided in the authN flow then the email address is used, so are actually optional.
+There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for First name and Last name or Full name. ****If they are not provided in the authN flow then the email address is used, so are actually optional.
 
 ![](.gitbook/assets/image%20%2868%29.png)
 
@@ -45,7 +45,7 @@ There are two main properties that TOL is interested in, your **Email** and **Di
 
 ### Claims
 
-Claims are widely referred to in Azure AD but not really in other major IdP's like Okta or OneLogin as they just refer to attributes. Claims seem to be a bit of a hangover from the ADFS days. Claims are information about user and groups that are shared between the identity provider and the service provider in the SAML token. In the SAML token they are usually contained in the Attribute Statement, so you only really need to consider them as attributes. A claim type provides context for the claim value. It is usually expressed as a Uniform Resource Identifier \(URI\). This URI is what is required to be put into the TOL configuration.
+Claims are widely referred to in Azure AD but not really in other major IdP's like Okta or OneLogin as they tend to refer to attributes. Claims are information about user and groups that are shared between the identity provider and the service provider in the SAML token. In the SAML token they are usually contained in the Attribute Statement, so you only really need to consider them as attributes. A claim type provides context for the claim value. It is usually expressed as a Uniform Resource Identifier \(URI\). This URI is what is required to be put into the TOL configuration.
 
 [SAML Token Claims Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-saml-tokens)
 
@@ -108,11 +108,11 @@ We ask for the Email attribute in the configuration which in turn is used as the
 
   `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
+It is not possible to map directly to the UPN claim as that is one of the [restricted claim sets ](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)in Azure AD. These _can't be modified using policy. The data source cannot be changed, and no transformation is applied when generating these claims_. So in this instance that is why the Name claim is used instead.
+
 You can choose to map `mail` or`userPrincipalName` as the `Email` in TOL. However as there isn't a separate email address attribute in TOL whatever is defined as `Email` must be a working email address as that value is what will be used to send out the subscriptions you have setup to views or workbooks.
 
 ![Workbook subscriptions](.gitbook/assets/image%20%2869%29.png)
-
-You can't map directly to the UPN claim as that is one of the [restricted claim sets ](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)in Azure AD. These _can't be modified using policy. The data source cannot be changed, and no transformation is applied when generating these claims_. So in this instance that is why Name is used.
 
 **Display Name:** Enter an assertion name for either the first name and last name, or for the full name, depending on how the IdP stores this information. Tableau Online uses these attributes to set the display name.
 
