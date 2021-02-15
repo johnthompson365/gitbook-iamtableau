@@ -10,7 +10,7 @@ The two apps have a different feature sets. The Tableau Online application suppo
 
 1. SP-initiated SSO
 2. SP-Initiated Single Logout \(SLO\)
-3. **REST API user provisioning**
+3. _REST API user provisioning_
 
 Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow.
 
