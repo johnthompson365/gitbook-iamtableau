@@ -11,9 +11,3 @@ description: Just to save Googling...
 | Andrija Marcic's Blog | [Deploying Tableau with Azure Application Proxy](https://medium.com/@tableauman/deploying-tableau-with-azure-application-proxy-e92e497aec4b) |
 |  |  |
 
-
-
-
-
-
-

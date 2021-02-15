@@ -7,19 +7,10 @@
 * [Recipe: OneLogin with Tableau](user-authentication/recipe-onelogin-tableau.md)
 * [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
 
-## DATA AUTHENTICATION
-
-## Terraform
-
-* [Notes: learn Terraform Modules](terraform/notes-learn-terraform-modules.md)
-* [Terraform Issues](terraform/notes-terraform-issues.md)
-
 ## Useful Links
 
----
-
-* [My 'go to' Tableau docs...](my-go-to-tableau-docs....md)
-* [My lab setup](notes-my-lab-setup.md)
+* [My 'go to' Tableau docs...](useful-links/my-go-to-tableau-docs....md)
+* [My lab setup](useful-links/notes-my-lab-setup.md)
 
 ## Drafts
 
