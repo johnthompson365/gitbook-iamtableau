@@ -161,7 +161,7 @@ So the best guidance is to ask:
 
 ### User Experience
 
-The Azure AD Tableau Online app always uses a SP-initiated flow. This means that the user experience involves a number of redirects. There are some configuration options that can smooth this experience.
+The Azure AD Tableau Online app **always** uses a SP-initiated flow. This means that the user experience involves a number of redirects. There are some configuration options that can smooth this experience.
 
 #### Remember me
 
