@@ -6,7 +6,7 @@ description: '1kg of Azure AD, 500g of SAML, and 100g of TOL'
 
 ## Scope
 
-Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. The initial release of this article focuses on Tableau Online.
+Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. The initial release of this article focuses on Tableau Online and SAML configuration. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works. 
 
 ## Features
 
