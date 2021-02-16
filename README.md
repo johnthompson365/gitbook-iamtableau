@@ -22,7 +22,7 @@ The approach I am taking with Gitbook is to use this as my note taker and blog. 
 
 ### Recipes
 
-A structured way to make you successful with a solution. Step by step and all the fun along the way.
+A structured way to make you successful with a solution. Usually step by step guidance with occasional detours.
 
 ### Notes
 

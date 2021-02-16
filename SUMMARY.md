@@ -5,7 +5,7 @@
 ## User Authentication
 
 * [Recipe: OneLogin with Tableau](user-authentication/recipe-onelogin-tableau.md)
-* [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
+* [Recipe: Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
 * [Recipe: Azure AD and Tableau](user-authentication/recipe-azure-ad-saml-and-tableau-online.md)
 
 ## Useful Links
