@@ -1,5 +1,7 @@
 ---
-description: '1 cup of OneLogin, 1/2 cup of Tableau, Tablespoon of SAML and a pinch of AD.'
+description: >-
+  1 cup of OneLogin, 1/2 cup of Tableau, Tablespoon of SAML and a pinch of
+  Active Directory
 ---
 
 # Recipe: OneLogin with Tableau

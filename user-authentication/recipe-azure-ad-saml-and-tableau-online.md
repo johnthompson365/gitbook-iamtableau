@@ -43,9 +43,9 @@ As part of the SAML authentication flow attributes are passed between the IdP \(
 
 There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for First name and Last name or Full name. ****If they are not provided in the authN flow then the email address is used, so are actually optional.
 
-![](.gitbook/assets/image%20%2868%29.png)
+![](../.gitbook/assets/image%20%2868%29.png)
 
-![TOL Attribute Configuration](.gitbook/assets/image%20%2861%29.png)
+![TOL Attribute Configuration](../.gitbook/assets/image%20%2861%29.png)
 
 ### Claims
 
@@ -116,7 +116,7 @@ It is not possible to map directly to the UPN claim as that is one of the [restr
 
 You can choose to map `mail` or`userPrincipalName` as the `Email` in TOL. However as there isn't a separate email address attribute in TOL whatever is defined as `Email` must be a working email address as that value is what will be used to send out the subscriptions you have setup to views or workbooks.
 
-![Workbook subscriptions](.gitbook/assets/image%20%2869%29.png)
+![Workbook subscriptions](../.gitbook/assets/image%20%2869%29.png)
 
 ### **Display Name**
 
@@ -132,11 +132,11 @@ So you can select either `givenname` + `surname` OR `displayname`
 
 As it states in Azure, the only required claim is actually the Name ID. So I deleted all other for Name, Given Name etc.
 
-![](.gitbook/assets/image%20%2874%29.png)
+![](../.gitbook/assets/image%20%2874%29.png)
 
 The identifier format is email address and in this instance I have mapped it to the Source Attribute of userPrincipalName in the directory \(more information: [How to: customize claims issued in the SAML token for enterprise applications](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-saml-claims-customization)\).
 
-![](.gitbook/assets/image%20%2872%29.png)
+![](../.gitbook/assets/image%20%2872%29.png)
 
 When logging on I received an error logging in:
 
@@ -144,7 +144,7 @@ _The site is configured to use the "_[_http://schemas.xmlsoap.org/ws/2005/05/ide
 
 By deleting the 'name' claim URI from the setting in Tableau Online \(shown below\) it forces SAML to rely on only the Name ID in the response.
 
-![No claims defined for Email attribute](.gitbook/assets/image%20%2875%29.png)
+![No claims defined for Email attribute](../.gitbook/assets/image%20%2875%29.png)
 
 You can then login successfully by only relying on the name identifier, but you won't get any useful information like First Name and Surname.
 
@@ -165,7 +165,7 @@ The Azure AD Tableau Online app always uses a SP-initiated flow. This means that
 
 You should advise your users to check the **Remember me** option when signing in to TOL. Without this checked the SAML flow will take the user back to the initial TOL SSO page to input the username before redirecting to the IdP.
 
-![](.gitbook/assets/image%20%289%29.png)
+![](../.gitbook/assets/image%20%289%29.png)
 
 **Keep me signed In \(KMSI\)**
 
