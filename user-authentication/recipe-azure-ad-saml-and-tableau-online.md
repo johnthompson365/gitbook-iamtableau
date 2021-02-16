@@ -157,7 +157,7 @@ So the best guidance is to ask:
 * Is the`UPN` the same value as the users working email account, to receive subscriptions?
 * Which out of the `mail` or `UPN` is more likely to change? 
   * If it did change, in Azure AD this will not be reflected in Tableau Online. 
-  * Best guidance
+  * [Follow these steps](https://kb.tableau.com/articles/howto/changing-tableau-online-user-name) to provision a new account, migrate content and delete old account.
 
 ### User Experience
 
