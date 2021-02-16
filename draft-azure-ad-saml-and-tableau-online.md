@@ -2,7 +2,7 @@
 
 ## Scope
 
-Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services.
+Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. The initial release of this article focuses on Tableau Online.
 
 ## Features
 
@@ -159,19 +159,11 @@ The Azure AD Tableau Online app always uses a SP-initiated flow. This means that
 
 #### Remember me
 
-You should advise your users to always check the **Remember me** option when signing in to TOL. Without this checked the SAML flow will take the user back to the initial TOL SSO page to input the username before redirecting to the IdP.
+You should advise your users to check the **Remember me** option when signing in to TOL. Without this checked the SAML flow will take the user back to the initial TOL SSO page to input the username before redirecting to the IdP.
 
-![](.gitbook/assets/image%20%2867%29.png)
+![](.gitbook/assets/image%20%289%29.png)
 
-If you select 'Remember me'
+**Keep me signed In \(KMSI\)**
 
-
-
-Login URL workaround
-
-[https://kb.tableau.com/articles/issue/prompted-to-enter-credentials-when-accessing-tableau-online-configured-with-saml](https://kb.tableau.com/articles/issue/prompted-to-enter-credentials-when-accessing-tableau-online-configured-with-saml)
-
-SP-initiated -
-
-Message: AADSTS50011: The reply URL specified in the request does not match the reply URLs configured for the application: '[https://sso.online.tableau.com/public/sp/metadata?alias=4e828bd1-](https://sso.online.tableau.com/public/sp/metadata?alias=4e828bd1-df88-4648-ab4e-743eadabed2a)xxx'.
+I would also ensure users choose to keep themselves signed in to Azure AD, if they have the option to. 
 
