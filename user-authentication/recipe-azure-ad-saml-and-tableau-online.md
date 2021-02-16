@@ -154,8 +154,10 @@ I am primarily interested in Enterprise organizations so consumer accounts are l
   
 So the best guidance is to ask:
 
-* Is the UPN the same value as the users working email account, to receive subscriptions?
-* Is it likely to change? and if so are you comfortable with signing in with an account that is different? 
+* Is the`UPN` the same value as the users working email account, to receive subscriptions?
+* Which out of the `mail` or `UPN` is more likely to change? 
+  * If it did change, in Azure AD this will not be reflected in Tableau Online. 
+  * Best guidance
 
 ### User Experience
 
