@@ -5,7 +5,7 @@
 ## User Authentication
 
 * [Recipe: OneLogin with Tableau](user-authentication/recipe-onelogin-tableau.md)
-* [Recipe: Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
+* [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
 * [Recipe: Azure AD and Tableau](user-authentication/recipe-azure-ad-saml-and-tableau-online.md)
 
 ## Useful Links
@@ -15,6 +15,6 @@
 
 ## Drafts
 
-* [Draft Recipe: Tableau and Presto with Kerberos sauce](drafts/notes-adventures-in-kerberos-delegation.md)
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
+* [Draft Recipe: Tableau and Presto with Kerberos sauce](drafts/notes-adventures-in-kerberos-delegation.md)
 

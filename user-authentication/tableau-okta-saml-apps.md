@@ -2,7 +2,7 @@
 description: Here is what I learned when testing out Tableau Online SAML with Okta
 ---
 
-# Recipe: Okta apps and Tableau
+# Okta apps and Tableau
 
 ## **Scope**
 
