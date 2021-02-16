@@ -1,4 +1,8 @@
-# Draft: Azure AD and Tableau
+---
+description: '1kg of Azure AD, 500g of SAML, and 100g of TOL'
+---
+
+# Recipe: Azure AD and Tableau
 
 ## Scope
 

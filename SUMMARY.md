@@ -19,5 +19,5 @@
 
 ---
 
-* [Draft: Azure AD and Tableau](draft-azure-ad-saml-and-tableau-online.md)
+* [Recipe: Azure AD and Tableau](draft-azure-ad-saml-and-tableau-online.md)
 
