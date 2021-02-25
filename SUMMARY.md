@@ -16,5 +16,8 @@
 ## Drafts
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
-* [Draft Recipe: Tableau and Presto with Kerberos sauce](drafts/notes-adventures-in-kerberos-delegation.md)
+
+## Notes
+
+* [Notes: Tableau and Presto with Kerberos sauce](notes/notes-adventures-in-kerberos-delegation.md)
 
