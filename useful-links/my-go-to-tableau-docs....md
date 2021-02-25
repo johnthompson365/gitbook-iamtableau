@@ -2,7 +2,9 @@
 description: Just to save Googling...
 ---
 
-# My 'go to' Tableau docs...
+# My 'go to' resources...
+
+## Tableau 
 
 | Owner / Medium | Title and link |
 | :--- | :--- |
@@ -10,4 +12,38 @@ description: Just to save Googling...
 | Andrija Marcic's Blog | [Configuring Kerberos authentication on Tableau server running on Windows](https://medium.com/@tableauman/configuring-kerberos-authentication-on-tableau-server-1917d127b6e3) |
 | Andrija Marcic's Blog | [Deploying Tableau with Azure Application Proxy](https://medium.com/@tableauman/deploying-tableau-with-azure-application-proxy-e92e497aec4b) |
 |  |  |
+|  |  |
+|  |  |
+|  |  |
+
+
+
+## Authentication
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Owner / Medium</th>
+      <th style="text-align:left"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">Aaron Parecki</td>
+      <td style="text-align:left">
+        <p><a href="https://www.oauth.com/">https://www.oauth.com/</a>
+          <br /><a href="https://oauth.net/">https://oauth.net/</a> 
+          <br /><a href="https://www.oauth.com/playground/">https://www.oauth.com/playground/</a>
+        </p>
+        <p><a href="https://www.udemy.com/course/oauth-2-simplified/?referralCode=B04F59AED67B8DA74FA7">Udemy: The Nuts and Bolts of OAuth 2.0</a>
+        </p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">OASIS</td>
+      <td style="text-align:left"><a href="https://wiki.oasis-open.org/security/FrontPage">https://wiki.oasis-open.org/security/FrontPage</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 

@@ -10,7 +10,7 @@
 
 ## Useful Links
 
-* [My 'go to' Tableau docs...](useful-links/my-go-to-tableau-docs....md)
+* [My 'go to' resources...](useful-links/my-go-to-tableau-docs....md)
 * [My lab setup](useful-links/notes-my-lab-setup.md)
 
 ## Drafts
