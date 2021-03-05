@@ -44,6 +44,11 @@ description: Just to save Googling...
       <td style="text-align:left"><a href="https://wiki.oasis-open.org/security/FrontPage">https://wiki.oasis-open.org/security/FrontPage</a>
       </td>
     </tr>
+    <tr>
+      <td style="text-align:left">SAML</td>
+      <td style="text-align:left"><a href="https://duo.com/blog/the-beer-drinkers-guide-to-saml">The Beer Drinkers Guide to SAML</a>
+      </td>
+    </tr>
   </tbody>
 </table>
 
