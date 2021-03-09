@@ -21,3 +21,7 @@
 
 * [Notes: Tableau and Presto with Kerberos sauce](notes/notes-adventures-in-kerberos-delegation.md)
 
+---
+
+* [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
+
