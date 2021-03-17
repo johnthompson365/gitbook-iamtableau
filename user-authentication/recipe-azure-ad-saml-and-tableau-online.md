@@ -171,5 +171,5 @@ You should advise your users to check the **Remember me** option when signing in
 
 **Keep me signed In \(KMSI\)**
 
-I would also ensure users choose to keep themselves signed in to Azure AD, if they have the option to. 
+As part of the Azure AD flow you are asked whether you want to stay signed in to the service. I would also ensure users to select this to prevent them having to input credentials again for an extended period of time. 
 
