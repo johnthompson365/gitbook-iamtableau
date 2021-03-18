@@ -13,10 +13,9 @@ Microsoft provides Azure AD apps that can be used to simplify the integration be
 The two apps have a different feature sets. The Tableau Online application supports the following three features, whereas Tableau Server does not support user provisioning.
 
 1. SP-initiated SSO
-2. SP-Initiated Single Logout \(SLO\)
-3. _REST API user provisioning_
+2. _REST API user provisioning_
 
-Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow.
+Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout \(SLO\) is not possible due to Azure AD's use fo HTTP-Redirect.
 
 #### Azure AD Premium Trial
 
