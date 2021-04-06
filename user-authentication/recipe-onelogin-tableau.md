@@ -72,7 +72,7 @@ I added the email address for one of my AD users re-synced and away we went!
 
 So the synchronisation is working, now I just need to setup SAML to test signing in with this user.
 
-#### Advanced Settings
+### Advanced Settings
 
 After a time I found I was being continually prompted for password expiry. I figured this wasn't driven from AD as I was manually changing the password and still getting prompted. You can check advnaced settings on the directory sync and there are a whole host of configuration options so I advise reviewing before deploying. ****The offending one for me was this one which was enabled by default:
 
@@ -88,7 +88,7 @@ The obvious steps apply of defining your entity ID, uploading certificates and s
 
 ![](../.gitbook/assets/image%20%287%29.png)
 
-### Certificates:
+### Certificates
 
 I chose to use the same certificates I used for the Server SSL. In addition to [all the normal requirements](https://help.tableau.com/current/server/en-us/saml_requ.htm#Certific) for your SSL certificate you [also need to ensure that](https://help.tableau.com/current/server/en-us/saml_requ.htm#Cert_Name) your certificate for SAML only includes the certificate that applies to Tableau Server and not any other certificates or keys.
 
