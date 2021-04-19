@@ -25,3 +25,7 @@
 
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
 
+## DATA AUTHENTICATION
+
+* [SharePoint Lists](data-authentication/sharepoint-lists.md)
+
