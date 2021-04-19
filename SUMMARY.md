@@ -8,24 +8,22 @@
 * [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
 * [Recipe: Azure AD and Tableau](user-authentication/recipe-azure-ad-saml-and-tableau-online.md)
 
+## DATA AUTHENTICATION
+
+* [SharePoint Lists](data-authentication/sharepoint-lists.md)
+
 ## Useful Links
 
 * [My 'go to' resources...](useful-links/my-go-to-tableau-docs....md)
 * [My lab setup](useful-links/notes-my-lab-setup.md)
 
-## Drafts
-
-* [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
-
 ## Notes
-
-* [Notes: Tableau and Presto with Kerberos sauce](notes/notes-adventures-in-kerberos-delegation.md)
 
 ---
 
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
 
-## DATA AUTHENTICATION
+## Drafts
 
-* [SharePoint Lists](data-authentication/sharepoint-lists.md)
+* [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
