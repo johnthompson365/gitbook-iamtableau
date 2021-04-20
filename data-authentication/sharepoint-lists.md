@@ -40,11 +40,13 @@ And receives an XML response that confirms the domain is federated and the endpo
 
 ![](../.gitbook/assets/image%20%2866%29.png)
 
-The `usernamemixed` endpoint is used by **WS-Federation** and traditionally was in use by Exchange Online Office clients \(older than Office 2013 May 2015 update\), in the legacy federated authentication flow. NOw all clients have moved to passive ADFS flows.
+The `usernamemixed` endpoint is used by **WS-Trust** and traditionally was in use by Exchange Online Office clients \(older than Office 2013 May 2015 update\), in the legacy Active federated authentication flow. Now all clients have moved to passive ADFS flows.
 
 The connector authenticates against the `usernamemixed` endpoint by passing the Username Token \(username and password\) as part of the encrypted SOAP envelope, and requests the SAML security token.
 
-The response then includes the SAML attributes and claims to pass back to Azure AD and gain access to Sharepoint Online. 
+The response then includes the SAML attributes and claims:
 
-![](../.gitbook/assets/image%20%2865%29.png)
+![](../.gitbook/assets/image%20%2870%29.png)
+
+ These are passed back to Azure AD to gain access to Sharepoint Online.
 
