@@ -40,9 +40,9 @@ And receives an XML response that confirms the domain is federated and the endpo
 
 ![](../.gitbook/assets/image%20%2866%29.png)
 
-The `usernamemixed` endpoint is used by **WS-Trust** and traditionally was in use by Exchange Online Office clients \(older than Office 2013 May 2015 update\), in the legacy Active federated authentication flow. Now all clients have moved to passive ADFS flows.
+The `usernamemixed` endpoint is used by **WS-Trust** and traditionally was in use by Exchange Online Office clients in the legacy Active federated authentication flow. Now all clients have moved to passive ADFS flows.
 
-The connector authenticates against the `usernamemixed` endpoint by passing the Username Token \(username and password\) as part of the encrypted SOAP envelope, and requests the SAML security token.
+The connector authenticates against the `usernamemixed` endpoint by sending transport encrypted SOAP envelope, passing the Username Token \(username and password\) to request the SAML security token.
 
 The response then includes the SAML attributes and claims:
 
