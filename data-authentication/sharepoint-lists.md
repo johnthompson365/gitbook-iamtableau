@@ -30,8 +30,6 @@ Which is rejected with a 401.
 
 `WWW-Authenticate: IDCRL Type="BPOSIDCRL", EndPoint="/sites/tableau/_vti_bin/idcrl.svc/", RootDomain="sharepoint.com", Policy="MBI"`
 
-[https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint](https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint)
-
 The connector then POST's the username to do home realm discovery
 
 ![](../.gitbook/assets/image%20%2858%29.png)
