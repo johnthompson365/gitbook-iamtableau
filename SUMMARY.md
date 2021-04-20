@@ -10,7 +10,7 @@
 
 ## DATA AUTHENTICATION
 
-* [SharePoint Lists](data-authentication/sharepoint-lists.md)
+* [SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
 
 ## Useful Links
 
