@@ -2,7 +2,7 @@
 description: How to integrate Tableau Desktop with ADFS
 ---
 
-# SharePoint Lists and ADFS
+# Recipe: SharePoint Lists and ADFS
 
 ### Overview
 
