@@ -50,3 +50,5 @@ The response then includes the SAML attributes and claims:
 
  These are passed back to Azure AD to gain access to Sharepoint Online.
 
+![BOOM!](../.gitbook/assets/image%20%2873%29.png)
+
