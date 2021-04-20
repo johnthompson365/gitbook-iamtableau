@@ -6,7 +6,7 @@ description: How to integrate Tableau Desktop with ADFS
 
 ### Overview
 
-Currently the supported Identity Providers that you can use with Third Party SSO are Okta and OneLogin. If you are an organization with ADFS then you may wonder where that leaves you. 
+Currently the supported Identity Providers that you can use with Third Party SSO are Okta and OneLogin. If you are an organization with ADFS and federated domains then you may wonder where that leaves you. 
 
 Well, there is a workable solution as the underlying CData driver has support for ADFS builtin. You would need to test this in your environment to ensure it works in your scenario.
 
@@ -16,7 +16,9 @@ Tableau provides [step-by-step guidance ](https://help.tableau.com/current/pro/d
 
 ### Desktop Setup
 
-The instructions are basically the same as the Third Party SSO option in the link above. The connector will guide you to install the driver. Once you have that installed then you have to configure the connection properties. Here you put in the URL of the site \(not the list\), and the username and password that you will be connecting with.
+The instructions are basically the same as the Third Party SSO option in the link above. The connector will guide you to install the driver. Once you have that installed then you have to configure the connection properties. Here you put in the URL of the site \(not the list\), and the username and password that you will be connecting with. 
+
+In my testing I did not require the SSO domain despite using a username from a domain that was different to the ADFS service's domain name.
 
 ![Connector properties](../.gitbook/assets/image%20%2864%29.png)
 
