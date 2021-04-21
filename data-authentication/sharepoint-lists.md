@@ -36,19 +36,35 @@ The connector then POST's the username to the 'Office 365 Front Door' `login.mic
 
 ![](../.gitbook/assets/image%20%2858%29.png)
 
-And receives an XML response that confirms the domain is federated and the endpoint on the ADFS server that needs to be used, in this instance `usernamemixed`:
-
-![](../.gitbook/assets/image%20%2866%29.png)
+And receives an XML response that confirms the domain is federated and the endpoint on the ADFS server \(STSAuthURL\) that needs to be used, in this instance `usernamemixed`.
 
 The `usernamemixed` endpoint is used by **WS-Trust** and traditionally was in use by Exchange Online Office clients in the Active federated authentication flow. Now all clients have moved to passive ADFS flows.
 
-The connector authenticates against the `usernamemixed` endpoint by sending transport encrypted SOAP envelope, passing the Username Token \(username and password\) to request the SAML security token.
+![](../.gitbook/assets/image%20%2866%29.png)
 
-The response then includes the SAML attributes and claims:
+The connector authenticates against the `usernamemixed` endpoint by sending transport encrypted SOAP envelope, passing the Username Token \(username and password\) to request the SAML security token. The response then includes the SAML attributes and claims:
 
-![](../.gitbook/assets/image%20%2870%29.png)
+![Claims...](../.gitbook/assets/image%20%2879%29.png)
 
- These are passed back to Azure AD to gain access to Sharepoint Online.
+The connector then makes a request to Azure AD for an access token using the SAML token from ADFS
+
+![](../.gitbook/assets/image%20%2877%29.png)
+
+The response includes the Azure AD authentication token.
+
+![](../.gitbook/assets/image%20%2876%29.png)
+
+The token is then sent as part of the headers to access SharePoint Online
+
+You will receive a 200 \(OK\) response with the authentication cookie **SPOIDCRL** in the header.
+
+![](../.gitbook/assets/image%20%2878%29.png)
+
+And importantly your desktop client finally accessing Sharepoint Lists.
 
 ![BOOM!](../.gitbook/assets/image%20%2873%29.png)
+
+### Useful reference:
+
+[https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint](https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint)
 
