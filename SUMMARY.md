@@ -29,5 +29,5 @@
 
 ---
 
-* [Draft: Tableau Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
+* [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
 
