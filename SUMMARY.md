@@ -27,3 +27,7 @@
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
+---
+
+* [Draft: Tableau Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
+
