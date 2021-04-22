@@ -64,7 +64,7 @@ And importantly your desktop client finally accessing Sharepoint Lists.
 
 ![BOOM!](../.gitbook/assets/image%20%2873%29.png)
 
-### Useful reference:
+### Useful reference
 
 [https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint](https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint)
 
