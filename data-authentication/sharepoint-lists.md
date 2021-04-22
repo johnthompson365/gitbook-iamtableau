@@ -6,7 +6,7 @@ description: How to integrate Tableau Desktop with ADFS
 
 ### Overview
 
-Whereas connectivity to Sharepoint Lists using Third-party SSO is currently supported with OneLogin and Okta, you might be wondering where that leaves your organization if you are utilizing ADFS? Well, there is a workable solution as the underlying CData driver has support for ADFS builtin. 
+Whereas connectivity to Sharepoint Lists using Third-party SSO is currently supported with OneLogin and Okta, you might be wondering where that leaves your organization if you are using ADFS? Well, there is a workable solution as the underlying CData driver has support for ADFS builtin. 
 
 You need to test this in your environment to ensure it works and be confident in maintaining it; as it is not supported by Tableau. 
 
