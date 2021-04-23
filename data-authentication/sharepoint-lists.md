@@ -68,10 +68,10 @@ And importantly your desktop client finally accessing Sharepoint Lists.
 
 Install the driver \(see above\).
 
-* [ ] Add user to OneLogin
-* [ ] Add user to Tableau
-* [ ] Test sign in to server and license
-* [ ] Create a data source and publish it
+* [ ] _Add user to OneLogin_
+* [ ] _Add user to Tableau_
+* [ ] _Test sign in to server and license_
+* [ ] _Create a data source and publish it_
 
 
 
