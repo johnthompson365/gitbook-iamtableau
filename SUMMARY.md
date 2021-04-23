@@ -11,6 +11,7 @@
 ## DATA AUTHENTICATION
 
 * [Recipe: SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
+* [Notes: Connecting to Tableau Repository DB](data-authentication/notes-connecting-to-tableau-repository-db.md)
 
 ## Useful Links
 
@@ -30,4 +31,8 @@
 ---
 
 * [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
+
+## Identity
+
+* [Changing usernames](identity/changing-usernames.md)
 
