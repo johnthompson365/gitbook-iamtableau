@@ -71,7 +71,7 @@ Install the driver \(see above\).
 * [ ] Add user to OneLogin
 * [ ] Add user to Tableau
 * [ ] Test sign in to server and license
-* [ ] Create a data source and 
+* [ ] Create a data source and publish it
 
 
 
