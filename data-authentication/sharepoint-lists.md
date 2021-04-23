@@ -64,7 +64,22 @@ And importantly your desktop client finally accessing Sharepoint Lists.
 
 ![BOOM!](../.gitbook/assets/image%20%2873%29.png)
 
+### Server Setup
+
+Install the driver \(see above\).
+
+* [ ] Add user to OneLogin
+* [ ] Add user to Tableau
+* [ ] Test sign in to server and license
+* [ ] Create a data source and 
+
+
+
 ### Useful reference
 
 [https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint](https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint)
+
+[https://help.tableau.com/v2020.4/server/en-us/creator\_connect.htm](https://help.tableau.com/v2020.4/server/en-us/creator_connect.htm) - SharePoint Lists are not a supported connector on Server. "If the connector you need doesn't appear in the Connectors tab, you can connect to data through Tableau Desktop and publish your data source to Tableau Online or Tableau Server for web authoring. Learn more about how to [Publish a Data Source in Tableau Desktop](https://help.tableau.com/current/pro/desktop/en-us/publish_datasources.htm)."
+
+
 
