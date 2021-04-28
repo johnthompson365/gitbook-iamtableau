@@ -1,5 +1,5 @@
 ---
-description: How to integrate Tableau Desktop with ADFS
+description: How to integrate with ADFS
 ---
 
 # Recipe: SharePoint Lists and ADFS
@@ -21,6 +21,19 @@ The instructions are basically the same as the Third Party SSO option in the lin
 In my testing I did not require the SSO domain despite using a username from a domain that was different to the ADFS service's domain name.
 
 ![Connector properties](../.gitbook/assets/image%20%2864%29.png)
+
+### Server Setup
+
+* [x] Install the driver \(see above\).
+* [x] Publish your data source to server
+* [x] Embed credentials if you want to configure a refresh
+* [x] Connect to data source
+
+![](../.gitbook/assets/image%20%2886%29.png)
+
+There is a Test Connection option to validate everything:
+
+![](../.gitbook/assets/image%20%2885%29.png)
 
 ### Under the hood
 
@@ -64,16 +77,27 @@ And importantly your desktop client finally accessing Sharepoint Lists.
 
 ![BOOM!](../.gitbook/assets/image%20%2873%29.png)
 
-### Server Setup
-
-Install the driver \(see above\).
-
-* [ ] _Add user to OneLogin_
-* [ ] _Add user to Tableau_
-* [ ] _Test sign in to server and license_
-* [ ] _Create a data source and publish it_
 
 
+![](../.gitbook/assets/image%20%2885%29.png)
+
+### Limitations
+
+SharePoint Online has the ability to turn off protocols that are viewed as Legacy by Azure AD. When contacting SharePoint Online The response status code is 'Unauthorized'.", and the underlying error is **"Access denied. Before opening files in this location, you must first browse to the web site and select the option to login automatically."**
+
+![](../.gitbook/assets/image%20%2887%29.png)
+
+My current setting was for LegacyAuthProtocolsEnabled was set to True and I am able to access the data.
+
+#### Testing
+
+![](../.gitbook/assets/image%20%2884%29.png)
+
+![You need those Legacy protocols](../.gitbook/assets/image%20%2888%29.png)
+
+In Fiddler I receive the 403 and see a **X-Forms\_Based\_Auth\_Required** and the **X-MSDAVEXT\_Error** in the headers.
+
+So ensure that `SetSPOTenant -LegacyAuthProtocolsEnabled $True`
 
 ### Useful reference
 

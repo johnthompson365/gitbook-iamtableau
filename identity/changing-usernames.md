@@ -12,7 +12,7 @@ The userPrincipalName is becoming the standard in many companies as **the** most
 
 When importing users into Tableau this relied on the sAMAccountName. More specifically it would import your user from Active Directory in the full `domain\sAMAccounName` format and this would end up as your Tableau username.
 
-Many organisations would like to use userPrincipalName instead. This is how you do it.
+Many organisations would like to use userPrincipalName instead. **This is how you do it.**
 
 
 
@@ -69,7 +69,7 @@ This requires a server restart!
 
 What does this mean for SAML?
 
-### SAML Authentication Fails in Multiple Domain Environment
+SAML Authentication Fails in Multiple Domain Environment??
 
 
 

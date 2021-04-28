@@ -13,6 +13,10 @@
 * [Recipe: SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
 * [Notes: Connecting to Tableau Repository DB](data-authentication/notes-connecting-to-tableau-repository-db.md)
 
+## Identity
+
+* [Changing usernames](identity/changing-usernames.md)
+
 ## Useful Links
 
 * [My 'go to' resources...](useful-links/my-go-to-tableau-docs....md)
@@ -23,6 +27,7 @@
 ---
 
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
+* [Notes: Tableau Server Upgrade](notes-tableau-server-upgrade.md)
 
 ## Drafts
 
@@ -31,8 +36,4 @@
 ---
 
 * [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
-
-## Identity
-
-* [Changing usernames](identity/changing-usernames.md)
 
