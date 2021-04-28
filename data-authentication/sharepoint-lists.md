@@ -95,9 +95,7 @@ My current setting was for LegacyAuthProtocolsEnabled was set to True and I am a
 
 ![You need those Legacy protocols](../.gitbook/assets/image%20%2888%29.png)
 
-In Fiddler I receive the 403 and see a **X-Forms\_Based\_Auth\_Required** and the **X-MSDAVEXT\_Error** in the headers.
-
-So ensure that `SetSPOTenant -LegacyAuthProtocolsEnabled $True`
+In Fiddler I receive the 403 and see a **X-Forms\_Based\_Auth\_Required** and the **X-MSDAVEXT\_Error** in the headers. So ensure that `SetSPOTenant -LegacyAuthProtocolsEnabled $True` for this connector to work.
 
 ### Useful reference
 
