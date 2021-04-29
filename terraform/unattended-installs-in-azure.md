@@ -189,7 +189,7 @@ As part of the Windows-VM module there are blocks to create the listener and con
 }
 ```
 
-[FirstLogonCommands.xml ](https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-firstlogoncommands)is used to create the directory to store scripts. It also copies the winrm.ps1 configuration script and runs it with the correct PowerShell parameters.
+[FirstLogonCommands.xml ](https://docs.microsoft.com/en-us/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup-firstlogoncommands)is used to create the directory to store scripts. It also copies the `winrm.ps1` configuration script and runs it with the correct PowerShell parameters.
 
 ```text
 <FirstLogonCommands>
@@ -211,7 +211,7 @@ As part of the Windows-VM module there are blocks to create the listener and con
 </FirstLogonCommands>
 ```
 
-100% borrowed. Not sure where I got this from, but thanks.
+100% _borrowed_. Not sure where I got this from, but thanks.
 
 ```text
 $profiles = Get-NetConnectionProfile
@@ -348,7 +348,13 @@ I played around too much without following this guidance and wasted time. You sh
 
 One of the challenges I found was that it would only work on minor versions, not a patch e.g. 1.10 not 1.10.5 - Maybe I need to use the minor version upgrade thingy?
 
-Keep on getting this error after 30 minutes but the installtakes longer, around 40 minutes! Error: Future\#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded
+### Timeouts
+
+Keep on getting this error after 30 minutes but the install takes longer, around 40 minutes! 
+
+`Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded`
+
+I changed the timeouts in the `resource "azurerm_virtual_machine_extension"` and found that the VM consistently completed in 30-40 minutes. Result.
 
 ```text
 timeouts {
@@ -357,5 +363,9 @@ timeouts {
    }
 ```
 
+### Considerations
 
+When running terraform destroy I received the following error as the VM was Stopped.
+
+`Error: compute.VirtualMachineExtensionsClient#Delete: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="OperationNotAllowed" Message="Cannot modify extensions in the VM when the VM is not running."`
 
