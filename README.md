@@ -10,7 +10,7 @@ I recently read a great quote from [@KelseyHightower](https://twitter.com/kelsey
 
 Well, this is me sharing.
 
-I work for Tableau as a Distinguished Solution Engineer, and specialize in Security, Identity, Integration and Authentication subjects. This GitBook is intended as an effort to shine a light on some of these subjects and help the \#datafam and Tableau community.
+I work for Tableau as a Distinguished Solution Engineer, and focus on Security and Compliance and Integration subjects. This GitBook is intended as an effort to shine a light on some of these subjects and help the \#datafam and Tableau community.
 
 These docs are not official Tableau content, and don't represent the views of my employer.
 
