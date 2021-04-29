@@ -31,6 +31,7 @@
 ---
 
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
+* [Notes: Terraform modules](notes-terraform-modules.md)
 * [Notes: Tableau Server Upgrade](notes-tableau-server-upgrade.md)
 
 ## Drafts
