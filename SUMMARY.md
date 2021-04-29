@@ -37,3 +37,7 @@
 
 * [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
 
+## Terraform
+
+* [Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
+
