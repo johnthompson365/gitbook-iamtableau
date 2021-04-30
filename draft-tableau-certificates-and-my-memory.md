@@ -24,7 +24,7 @@ For my lab I want the simplest configuration so want to be able to use the same 
 
 
 
-Follow the Tutorial linked below to get your certificates:
+If you are running Windows follow the Tutorial linked below to get your certificates:
 
 {% embed url="https://github.com/rmbolger/Posh-ACME/blob/main/Tutorial.md" %}
 
@@ -38,9 +38,11 @@ Posh-ACME provides you with everything you need:
 * fullchain.cer \(Base64 encoded PEM with cert+chain\) 
 * fullchain.pfx \(PKCS12 container with cert+key+chain\)
 
+If you are using Linux then knock yourself out with then try [certbot](https://certbot.eff.org/).
+
 ### Updating your certificate
 
-Click Reset and go through the standard steps of uploading your certificate files.
+Click Reset and go through the standard steps of uploading your certificate files. Yes, it needs a restart.
 
 {% embed url="https://help.tableau.com/current/server/en-us/ssl\_config.htm\#change-or-update-ssl-certificate" %}
 
