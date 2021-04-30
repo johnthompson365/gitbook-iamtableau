@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Welcome friends](README.md)
+* [Welcome friends\*](README.md)
 
 ## User Authentication
 

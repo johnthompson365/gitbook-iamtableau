@@ -2,7 +2,7 @@
 description: Thanks for visiting my book
 ---
 
-# Welcome friends
+# Welcome friends\*
 
 I recently read a great quote from [@KelseyHightower](https://twitter.com/kelseyhightower/status/1343116529664069634)...
 
@@ -16,7 +16,7 @@ These docs are not official Tableau content, and don't represent the views of my
 
 If there are errors or areas for improvement or suggestions for content please raise an issue on [GitHub](https://github.com/johnthompson365/gitbook-tableau), or _Edit on Github_ yourself using the link on the page and raise a PR.
 
-## Content
+## Content and Formats
 
 The approach I am taking with Gitbook is to use this as my note taker and blog. I just wanted to stop the barrier to publishing that is 'perfect'. Also, I thought it would be useful for a bit of transparency in the process of learning and writing the docs.
 
@@ -32,5 +32,5 @@ If the article has a _Notes_ prefix, it is intended as just that; quick notes on
 
 You know it'll be rough and ready, or incomplete at best!
 
-NB. "Welcome friends" is lovingly appropriated from [@shanselman](https://twitter.com/shanselman)
+NB: "Welcome friends" is lovingly appropriated from [@shanselman](https://twitter.com/shanselman)
 
