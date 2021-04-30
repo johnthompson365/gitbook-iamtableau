@@ -16,13 +16,13 @@ Many organisations would like to use userPrincipalName instead. **This is how yo
 
 
 
-![](../.gitbook/assets/image%20%2881%29.png)
+![](.gitbook/assets/image%20%2881%29.png)
 
 ### How do you change this?
 
 We have guidance for it our [docs](https://help.tableau.com/current/server/en-us/users_manage_ad.htm):
 
-![](../.gitbook/assets/image%20%2883%29.png)
+![](.gitbook/assets/image%20%2883%29.png)
 
 ### So can I import Groups this way?
 
@@ -43,11 +43,11 @@ What happens to my data?
 
 This:
 
-![](../.gitbook/assets/image%20%2882%29.png)
+![](.gitbook/assets/image%20%2882%29.png)
 
 Checking out the vizportal logs:
 
-![](../.gitbook/assets/image%20%2880%29.png)
+![](.gitbook/assets/image%20%2880%29.png)
 
 You need to ensure that all of your suffixes are added to the Tableau domain allow list.
 

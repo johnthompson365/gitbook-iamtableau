@@ -15,9 +15,13 @@
 
 ## Identity
 
+---
+
+* [Draft: Changing usernames](changing-usernames.md)
+
 ## Terraform
 
-* [Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
+* [Draft: Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
 * [Terrazure next steps](terraform/terrazure-next-steps.md)
 
 ## Useful Links
@@ -34,7 +38,6 @@
 
 ## Drafts
 
-* [Draft: Changing usernames](drafts/changing-usernames.md)
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
 ---
