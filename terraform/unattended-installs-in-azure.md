@@ -365,7 +365,7 @@ timeouts {
 
 ### Considerations
 
-When running terraform destroy I received the following error as the VM was Stopped.
+When running terraform destroy I received the following error as the VM was Stopped. You need those servers running to make changes.
 
 `Error: compute.VirtualMachineExtensionsClient#Delete: Failure sending request: StatusCode=0 -- Original Error: autorest/azure: Service returned an error. Status= Code="OperationNotAllowed" Message="Cannot modify extensions in the VM when the VM is not running."`
 

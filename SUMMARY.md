@@ -20,6 +20,10 @@
 * [Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
 * [Terrazure next steps](terraform/terrazure-next-steps.md)
 
+## Terraform <a id="terraform-1"></a>
+
+* [Draft: Unattended installs in Azure](terraform-1/unattended-installs-in-azure.md)
+
 ## Useful Links
 
 * [My 'go to' resources...](useful-links/my-go-to-tableau-docs....md)
@@ -41,12 +45,4 @@
 ---
 
 * [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
-
-## Terraform <a id="terraform-1"></a>
-
-* [Unattended installs in Azure](terraform-1/unattended-installs-in-azure.md)
-
-## Terraform <a id="terraform-1-1"></a>
-
-* [Untitled](terraform-1-1/untitled.md)
 
