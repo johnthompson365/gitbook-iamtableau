@@ -1,5 +1,5 @@
 ---
-description: How to integrate with ADFS
+description: How it works under the hood.
 ---
 
 # Recipe: SharePoint Lists and ADFS
