@@ -43,3 +43,11 @@
 
 * [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
 
+## Terraform <a id="terraform-1"></a>
+
+* [Unattended installs in Azure](terraform-1/unattended-installs-in-azure.md)
+
+## Terraform <a id="terraform-1-1"></a>
+
+* [Untitled](terraform-1-1/untitled.md)
+
