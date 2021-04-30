@@ -20,6 +20,7 @@
 ## Terraform
 
 * [Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
+* [Terrazure next steps](terraform/terrazure-next-steps.md)
 
 ## Useful Links
 
