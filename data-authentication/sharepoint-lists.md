@@ -103,5 +103,9 @@ In Fiddler I receive the 403 and see a **X-Forms\_Based\_Auth\_Required** and th
 
 [https://help.tableau.com/v2020.4/server/en-us/creator\_connect.htm](https://help.tableau.com/v2020.4/server/en-us/creator_connect.htm) - SharePoint Lists are not a supported connector on Server. "If the connector you need doesn't appear in the Connectors tab, you can connect to data through Tableau Desktop and publish your data source to Tableau Online or Tableau Server for web authoring. Learn more about how to [Publish a Data Source in Tableau Desktop](https://help.tableau.com/current/pro/desktop/en-us/publish_datasources.htm)."
 
+[https://blog.areflyen.no/2017/06/18/problem-with-connecting-to-sharepoint-online-in-office-365-with-powershell-sharepoint-designer-and-other-3-party-tools/](https://blog.areflyen.no/2017/06/18/problem-with-connecting-to-sharepoint-online-in-office-365-with-powershell-sharepoint-designer-and-other-3-party-tools/)
+
+`X-MSDAVEXT_Error: 917656; Access+denied.+Before+opening+files+in+this+location%2c+you+must+first+browse+to+the+web+site+and+select+the+option+to+login+automatically.`
+
 
 
