@@ -15,8 +15,6 @@
 
 ## Identity
 
-* [Changing usernames](identity/changing-usernames.md)
-
 ## Terraform
 
 * [Unattended installs in Azure](terraform/unattended-installs-in-azure.md)
@@ -37,6 +35,7 @@
 
 ## Drafts
 
+* [Draft: Changing usernames](drafts/changing-usernames.md)
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
 ---
