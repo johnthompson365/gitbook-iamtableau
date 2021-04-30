@@ -2,7 +2,7 @@
 description: WinRM Provisioner Connection or CustomScriptExtension?
 ---
 
-# Draft: Unattended installs in Azure
+# Unattended installs in Azure
 
 ## The Challenge... 
 
