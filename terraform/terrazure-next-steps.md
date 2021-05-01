@@ -28,7 +28,54 @@ Windows
   * [ ] The `terraform.tfvars.json` file, if present.
   * [ ] Any `*.auto.tfvars` or `*.auto.tfvars.json` files, processed in lexical order of their filenames.
   * [ ] Any `-var` and `-var-file` options on the command line, in the order they are provided. \(This includes variables set by a Terraform Cloud workspace.\)
-* [ ] What happens to the keyvault itself? \(recreated each time / unique name \)
-* [ ] Comment out any unknown code \# or /\* and \*/
-* [ ] Delete unused code/files
+* [ ] WHAT about LOCALS
+  * [ ] A local value assigns a name to an [expression](https://www.terraform.io/docs/language/expressions/index.html), so you can use it multiple times within a module without repeating it. Local values are like a function's temporary local variables.
+  * [ ] a good example is if you have to define tags for resources define them once in locals and specify in the module, or manipulating resource attributes eg. key\_vault\_name = split\("/", azurerm\_key\_vault.tabwinkv.id\)\[8\]
+  * [ ] default\_vm\_tags = {
+
+    os\_family       = "windows"
+
+    os\_distribution = lookup\(var.vm\_image, "offer", "undefined"\)
+
+    os\_version      = lookup\(var.vm\_image, "sku", "undefined"\)
+
+    }
+* [ ] What about DATA
+  * [ ] _Data sources_ allow data to be fetched or computed for use elsewhere in Terraform configuration. Use of data sources allows a Terraform configuration to make use of information defined outside of Terraform, or defined by another separate Terraform configuration.
+* [x] What happens to the keyvault itself? \(recreated each time / unique name \) - **\`**
+* [x] Comment out any unknown code \# or /\* and \*/
+* [x] Delete unused code/files
+
+
+
+ACTIONS:
+
+#### TAGS
+
+Use tags to define security & compliance requirements e.g. data classification and Governance and regulatory compliance.   
+[https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)  
+Look at using Locals or Variables for this. Consider Windows and Linux.  
+resource "azurerm\_resource\_group"
+
+variable "tags" { type = map
+
+default = { Environment = "Tableau-Windows" } }
+
+#### OUTPUTS
+
+Test outputs by deploying server.
+
+#### DATA
+
+AFAIK this is th eonly place it is used. It is required -&gt; 
+
+output "public\_ip\_address" { value = data.azurerm\_public\_ip.ip.ip\_address }
+
+[https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public\_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip)
+
+
+
+
+
+
 
