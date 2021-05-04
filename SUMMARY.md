@@ -29,6 +29,7 @@
 
 ---
 
+* [Notes: Azure Synapse](notes-azure-synapse.md)
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
 * [Notes: Terraform modules](notes-terraform-modules.md)
 
