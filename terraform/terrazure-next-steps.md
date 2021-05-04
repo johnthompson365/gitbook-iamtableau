@@ -40,8 +40,11 @@ Windows
     os\_version      = lookup\(var.vm\_image, "sku", "undefined"\)
 
     }
+
+  * [ ] \*\*\*\*[**Simplify Terraform Configuration with Locals**](https://learn.hashicorp.com/tutorials/terraform/locals)\*\*\*\*
 * [ ] What about DATA
   * [ ] _Data sources_ allow data to be fetched or computed for use elsewhere in Terraform configuration. Use of data sources allows a Terraform configuration to make use of information defined outside of Terraform, or defined by another separate Terraform configuration.
+  * [ ] Good example with the public IP - [https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public\_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip)
 * [x] What happens to the keyvault itself? \(recreated each time / unique name \) - **\`**
 * [x] Comment out any unknown code \# or /\* and \*/
 * [x] Delete unused code/files
@@ -67,7 +70,7 @@ Test outputs by deploying server.
 
 #### DATA
 
-AFAIK this is th eonly place it is used. It is required -&gt; 
+AFAIK this is the only place it is used. It is required -&gt; 
 
 output "public\_ip\_address" { value = data.azurerm\_public\_ip.ip.ip\_address }
 
