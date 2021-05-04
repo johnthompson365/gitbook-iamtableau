@@ -32,5 +32,7 @@ If the article has a _Notes_ prefix, it is intended as just that; quick notes on
 
 You know it'll be rough and ready, or incomplete at best!
 
+## 
+
 \* "Welcome friends" is lovingly appropriated from [@shanselman](https://twitter.com/shanselman)
 
