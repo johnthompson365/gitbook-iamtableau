@@ -29,8 +29,10 @@ Windows
   * [ ] Any `*.auto.tfvars` or `*.auto.tfvars.json` files, processed in lexical order of their filenames.
   * [ ] Any `-var` and `-var-file` options on the command line, in the order they are provided. \(This includes variables set by a Terraform Cloud workspace.\)
 * [ ] WHAT about LOCALS
+* [ ] [https://www.terraform.io/docs/language/values/locals.html\#when-to-use-local-values](https://www.terraform.io/docs/language/values/locals.html#when-to-use-local-values)
   * [ ] A local value assigns a name to an [expression](https://www.terraform.io/docs/language/expressions/index.html), so you can use it multiple times within a module without repeating it. Local values are like a function's temporary local variables.
-  * [ ] a good example is if you have to define tags for resources define them once in locals and specify in the module, or manipulating resource attributes eg. key\_vault\_name = split\("/", azurerm\_key\_vault.tabwinkv.id\)\[8\]
+  * [ ] Unlike input variables, locals are not set directly by users of your configuration. 
+  * [ ] A good example is if you have to define required tags for resources such as environment and data classification. define them once in locals and they can't be overwritten by users \(unlike variables\) they can be specified in the module, or manipulating resource attributes eg. key\_vault\_name = split\("/", azurerm\_key\_vault.tabwinkv.id\)\[8\]
   * [ ] default\_vm\_tags = {
 
     os\_family       = "windows"
@@ -42,6 +44,14 @@ Windows
     }
 
   * [ ] \*\*\*\*[**Simplify Terraform Configuration with Locals**](https://learn.hashicorp.com/tutorials/terraform/locals)\*\*\*\*
+    * [ ] Techniques: You can add locals { name = repeating.variable } to the start of the main.tf
+    * [ ] You can add multiple locals blocks
+    * [ ] Combine locals with variables
+      * [ ] start by defining your locals
+      * [ ] add them to the variables
+    * [ ] Use locals with values that you need control over
+    * [ ] Use to simplify repetitive code
+      * [ ] You can use it as part of _name = "vpc-${local.name\_suffix}"_
 * [ ] What about DATA
   * [ ] _Data sources_ allow data to be fetched or computed for use elsewhere in Terraform configuration. Use of data sources allows a Terraform configuration to make use of information defined outside of Terraform, or defined by another separate Terraform configuration.
   * [ ] Good example with the public IP - [https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public\_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip)
@@ -64,17 +74,19 @@ variable "tags" { type = map
 
 default = { Environment = "Tableau-Windows" } }
 
+#### 
+
+#### 
+
 #### OUTPUTS
 
-Test outputs by deploying server.
+Test outputs by deploying server.  
+  
+**Modules**
 
-#### DATA
+Should I rewrite to add those?
 
-AFAIK this is the only place it is used. It is required -&gt; 
-
-output "public\_ip\_address" { value = data.azurerm\_public\_ip.ip.ip\_address }
-
-[https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public\_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip)
+What about modules from the register?
 
 
 
