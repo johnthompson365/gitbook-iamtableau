@@ -30,9 +30,14 @@ Windows
   * [ ] Any `-var` and `-var-file` options on the command line, in the order they are provided. \(This includes variables set by a Terraform Cloud workspace.\)
 * [ ] WHAT about LOCALS
 * [ ] [https://www.terraform.io/docs/language/values/locals.html\#when-to-use-local-values](https://www.terraform.io/docs/language/values/locals.html#when-to-use-local-values)
+
   * [ ] A local value assigns a name to an [expression](https://www.terraform.io/docs/language/expressions/index.html), so you can use it multiple times within a module without repeating it. Local values are like a function's temporary local variables.
   * [ ] Unlike input variables, locals are not set directly by users of your configuration. 
   * [ ] A good example is if you have to define required tags for resources such as environment and data classification. define them once in locals and they can't be overwritten by users \(unlike variables\) they can be specified in the module, or manipulating resource attributes eg. key\_vault\_name = split\("/", azurerm\_key\_vault.tabwinkv.id\)\[8\]
+
+
+
+  * [ ] Use tags to define security & compliance requirements e.g. data classification and Governance and regulatory compliance.  [https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)
   * [ ] default\_vm\_tags = {
 
     os\_family       = "windows"
@@ -52,6 +57,7 @@ Windows
     * [ ] Use locals with values that you need control over
     * [ ] Use to simplify repetitive code
       * [ ] You can use it as part of _name = "vpc-${local.name\_suffix}"_
+
 * [ ] What about DATA
   * [ ] _Data sources_ allow data to be fetched or computed for use elsewhere in Terraform configuration. Use of data sources allows a Terraform configuration to make use of information defined outside of Terraform, or defined by another separate Terraform configuration.
   * [ ] Good example with the public IP - [https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public\_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/public_ip)
@@ -61,26 +67,11 @@ Windows
 
 
 
-ACTIONS:
+**ACTIONS:**
 
-#### TAGS
+#### Tableau Script
 
-Use tags to define security & compliance requirements e.g. data classification and Governance and regulatory compliance.   
-[https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json](https://docs.microsoft.com/en-us/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json)  
-Look at using Locals or Variables for this. Consider Windows and Linux.  
-resource "azurerm\_resource\_group"
-
-variable "tags" { type = map
-
-default = { Environment = "Tableau-Windows" } }
-
-#### 
-
-#### 
-
-#### OUTPUTS
-
-Test outputs by deploying server.  
+Test out deploying again  
   
 **Modules**
 
