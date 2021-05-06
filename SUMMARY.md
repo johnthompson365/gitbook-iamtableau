@@ -11,7 +11,6 @@
 ## DATA AUTHENTICATION
 
 * [Recipe: SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
-* [Notes: Connecting to Tableau Repository DB](data-authentication/notes-connecting-to-tableau-repository-db.md)
 
 ## Identity
 
