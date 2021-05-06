@@ -177,9 +177,12 @@ So this time the OneLogin app makes more sense.
 
 ## Client Exceptions
 
-I mentioned earlier that with Server-Wide SAML configured every user had to authenticate using SAML, there is no mixed authentication methods. However, there is an interesting feature within the SAML configuration that allows you to apply exceptions for both the Desktop and Mobile client.
+I mentioned earlier that with Server-Wide SAML configured every user had to authenticate using SAML, there is no mixed authentication methods. However, there is an interesting feature within the SAML configuration that allows you to apply exceptions for the Desktop client.
 
 ![](../.gitbook/assets/image%20%2847%29.png)
+
+> There is updated guidance around Mobile client option shown above as it no longer works for newer clients:   
+> Allow using SAML to sign in from older versions of Tableau Mobile app. Devices running Tableau Mobile app version 19.225.1731 and higher ignore this option. To disable devices running Tableau Mobile app version 19.225.1731 and higher, disable SAML as a client login option on Tableau Server.
 
 When I choose to sign in to the Tableau Server using the desktop client I get challenged by the normal SAML flow \(shown below\).
 
