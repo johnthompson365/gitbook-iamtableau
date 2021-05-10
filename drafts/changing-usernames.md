@@ -43,7 +43,7 @@ In short, no. If you import an Active Directory user group, Tableau will import 
 
 ### What are the options if you must use/change to UPN?
 
-With LDAP you can choose the exact attribute in their identity store as the username. If this is a current installation then it may the need to migrate the content because I don’t believe we can do an update of the attribute and have tableau update the repository.
+With LDAP you can choose the exact attribute in their identity store as the username. If this is a current installation then it may need content migration because I don’t believe it can do an update of the attribute and have Tableau update the repository.
 
 ### 
 
