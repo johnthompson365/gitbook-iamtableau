@@ -34,7 +34,7 @@
 
 ## Drafts
 
-* [Draft: Changing usernames](drafts/changing-usernames.md)
+* [Draft: sAMAccountName & userPrincipalName](drafts/changing-usernames.md)
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
 ---
