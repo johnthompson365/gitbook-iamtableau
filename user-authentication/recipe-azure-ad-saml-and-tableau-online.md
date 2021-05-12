@@ -180,7 +180,43 @@ The Tableau Server Azure AD app supports SP-initiated sign on.
 
 Downloading the metadata file from Tableau Server and then uploading to Azure AD simplifies the first steps in configuring the IdP. This gives you the correct URLs at least in my instance:
 
-![](../.gitbook/assets/image%20%28107%29.png)
+![Your friendly URLs](../.gitbook/assets/image%20%28108%29.png)
 
- 
+### Do you have a claim?
+
+The claims we define in our docs are:
+
+![Our docs ask for this...](../.gitbook/assets/image%20%28113%29.png)
+
+But if you go to the Server UI it asks you to match these assertions.
+
+![The UI shows this...](../.gitbook/assets/image%20%28116%29.png)
+
+The default claims defined in the Azure AD app just work and shouldn't require changing.
+
+![The default Azure app gives you this...](../.gitbook/assets/image%20%28107%29.png)
+
+When you look closer at the claims:
+
+![](../.gitbook/assets/image%20%28115%29.png)
+
+![](../.gitbook/assets/image%20%28112%29.png)
+
+![](../.gitbook/assets/image%20%28109%29.png)
+
+
+
+### Common setup issues...
+
+...or at least the mistakes that I made.
+
+1\) Remember to add your user to the App in Azure AD first.
+
+![](../.gitbook/assets/image%20%28111%29.png)
+
+2\) Ensure that you use test it with an account that is synchronised from Active Directory. 
+
+I used an Azure AD created identity and it didn't have an on-premisessAMAccountName that matches the username in Tableau. So it didn't pass the username attribute as required by Tableau.
+
+![](../.gitbook/assets/image%20%28114%29.png)
 
