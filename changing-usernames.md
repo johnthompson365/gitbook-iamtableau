@@ -1,4 +1,4 @@
-# Draft: sAMAccountName & userPrincipalName
+# sAMAccountName & userPrincipalName
 
 The userPrincipalName is becoming the standard in many companies as **the** most important identity attribute in their directory.
 
@@ -8,7 +8,7 @@ The userPrincipalName is becoming the standard in many companies as **the** most
 
 When importing users into Tableau Server this relies on the sAMAccountName. More specifically it would import your user from Active Directory in the full `domain\sAMAccountName` format and this would end up as your Tableau username.
 
-![](../.gitbook/assets/image%20%2881%29.png)
+![](.gitbook/assets/image%20%2881%29.png)
 
 **At present it is not possible to change this to UPN for Tableau Server using Active Directory as an External Identity Store.**
 
@@ -18,19 +18,19 @@ There are some exceptions described in our [docs](https://help.tableau.com/curre
 
 _Exception 1: If the UPN prefix of the user specified is greater than 20 characters, and the search string matches the full UPN, and is entered with the Windows login format \(domain\UPN\)._
 
-![UPN prefix over 20 characters](../.gitbook/assets/image%20%28101%29.png)
+![UPN prefix over 20 characters](.gitbook/assets/image%20%28101%29.png)
 
-![Import like this](../.gitbook/assets/image%20%28104%29.png)
+![Import like this](.gitbook/assets/image%20%28104%29.png)
 
 This imported the user with the UPN prefix as the username and not the sAMAcountname:
 
-![](../.gitbook/assets/image%20%2897%29.png)
+![](.gitbook/assets/image%20%2897%29.png)
 
 _Exception 2: If the user name you specify includes an `@`symbol in the UPN prefix and the search string you enter is either in the Windows domain login format \(`example.lan\jsmith@domain`\) or is the full UPN._
 
-![Another @!](../.gitbook/assets/image%20%2898%29.png)
+![Another @!](.gitbook/assets/image%20%2898%29.png)
 
-![](../.gitbook/assets/image%20%2896%29.png)
+![](.gitbook/assets/image%20%2896%29.png)
 
 ### So can I import Groups this way?
 
@@ -59,21 +59,21 @@ What's a UPN suffix?
 
 You can create additional UPN suffixes, often to match the email addresses in use in your org so your users just have to remember 1 identity.
 
-![More suffixes please](../.gitbook/assets/image%20%28111%29.png)
+![More suffixes please](.gitbook/assets/image%20%28111%29.png)
 
 UPN suffixes are then assigned to your users within your Active Directory forest. 
 
-![A user with a different UPN suffix to the ](../.gitbook/assets/image%20%28102%29.png)
+![A user with a different UPN suffix to the ](.gitbook/assets/image%20%28102%29.png)
 
-![Repository](../.gitbook/assets/image%20%28103%29.png)
+![Repository](.gitbook/assets/image%20%28103%29.png)
 
 If you logon to Tableau with a different UPN suffix than your 'Domain Name' then you will receive this error.
 
-![](../.gitbook/assets/image%20%2882%29.png)
+![](.gitbook/assets/image%20%2882%29.png)
 
 Checking out the vizportal logs:
 
-![](../.gitbook/assets/image%20%2880%29.png)
+![](.gitbook/assets/image%20%2880%29.png)
 
 You need to ensure that all of your suffixes are added to the Tableau domain allow list.
 
@@ -83,5 +83,5 @@ If Tableau Server connects to multiple domains, you must also specify the other 
 
 [https://help.tableau.com/current/server/en-us/cli\_configuration-set\_tsm.htm\#wgserver-domain-acceptlist](https://help.tableau.com/current/server/en-us/cli_configuration-set_tsm.htm#wgserver-domain-acceptlist)
 
-![](../.gitbook/assets/image%20%28105%29.png)
+![](.gitbook/assets/image%20%28105%29.png)
 

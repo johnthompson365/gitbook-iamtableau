@@ -14,6 +14,10 @@
 
 ## Identity
 
+---
+
+* [sAMAccountName & userPrincipalName](changing-usernames.md)
+
 ## Terraform
 
 * [Unattended installs in Azure with Terraform](terraform/unattended-installs-in-azure.md)
@@ -34,7 +38,6 @@
 
 ## Drafts
 
-* [Draft: sAMAccountName & userPrincipalName](drafts/changing-usernames.md)
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
 ---
