@@ -18,9 +18,9 @@ There are some exceptions described in our [docs](https://help.tableau.com/curre
 
 _Exception 1: If the UPN prefix of the user specified is greater than 20 characters, and the search string matches the full UPN, and is entered with the Windows login format \(domain\UPN\)._
 
-![UPN prefix over 20 characters](../.gitbook/assets/image%20%2898%29.png)
+![UPN prefix over 20 characters](../.gitbook/assets/image%20%28101%29.png)
 
-![Import like this](../.gitbook/assets/image%20%28101%29.png)
+![Import like this](../.gitbook/assets/image%20%28104%29.png)
 
 This imported the user with the UPN prefix as the username and not the sAMAcountname:
 
@@ -28,7 +28,7 @@ This imported the user with the UPN prefix as the username and not the sAMAcount
 
 _Exception 2: If the user name you specify includes an `@`symbol in the UPN prefix and the search string you enter is either in the Windows domain login format \(`example.lan\jsmith@domain`\) or is the full UPN._
 
-![Another @!](../.gitbook/assets/image%20%2895%29.png)
+![Another @!](../.gitbook/assets/image%20%2898%29.png)
 
 ![](../.gitbook/assets/image%20%2896%29.png)
 
@@ -51,7 +51,7 @@ With LDAP you can choose the exact attribute in their identity store as the user
 
 UPN suffixes are a maintained list of supported suffixes that can be used for your users within your Active Directory forest.
 
-![A user with a different UPN suffix to the ](../.gitbook/assets/image%20%2899%29.png)
+![A user with a different UPN suffix to the ](../.gitbook/assets/image%20%28102%29.png)
 
 This:
 
@@ -69,9 +69,9 @@ If Tableau Server connects to multiple domains, you must also specify the other 
 
 [https://help.tableau.com/current/server/en-us/cli\_configuration-set\_tsm.htm\#wgserver-domain-acceptlist](https://help.tableau.com/current/server/en-us/cli_configuration-set_tsm.htm#wgserver-domain-acceptlist)
 
-![](../.gitbook/assets/image%20%28102%29.png)
+![](../.gitbook/assets/image%20%28105%29.png)
 
-![Repository](../.gitbook/assets/image%20%28100%29.png)
+![Repository](../.gitbook/assets/image%20%28103%29.png)
 
 {% embed url="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/assigning-domain-names" %}
 

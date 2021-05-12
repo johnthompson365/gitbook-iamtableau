@@ -21,11 +21,39 @@ What is abfss ? \([https://docs.microsoft.com/en-us/azure/storage/blobs/data-lak
 
 {% embed url="https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-storage" %}
 
+### Concepts
+
+{% embed url="https://docs.microsoft.com/en-us/azure/azure-sql/database/logical-servers" %}
+
+
+
+### Username and Password
+
 DATA\_SOURCE = 'TabLake',
 
-data\_explorer WITH PASSWORD = 'My Very Strong Password 1234!';
+data\_explorer WITH PASSWORD = 'My Very Strong Password that I like to use all the time, everywhere';
 
 DataExplorationDB
 
 ![](.gitbook/assets/image%20%2894%29.png)
+
+### Tested Connecting with OAuth
+
+{% embed url="https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-add-admin" %}
+
+
+
+{% embed url="https://kb.tableau.com/articles/issue/Error-Authentication-failed-When-Connecting-to-Azure-Data-Lake-Storage-Gen2" %}
+
+![](.gitbook/assets/image%20%2895%29.png)
+
+![](.gitbook/assets/image%20%28100%29.png)
+
+![](.gitbook/assets/image%20%2899%29.png)
+
+{% embed url="https://www.thorogood.com/webcasts/2020-07-30-tableau-and-azure/" %}
+
+{% embed url="https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell" %}
+
+
 
