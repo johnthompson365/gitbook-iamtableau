@@ -75,6 +75,12 @@ Test out deploying again
   
 **Modules**
 
+How to turn into tfvars variable?[https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/data\_source](https://registry.terraform.io/providers/hashicorp/external/latest/docs/data-sources/data_source)  
+[https://discuss.hashicorp.com/t/how-to-use-templatefile-to-pass-a-powershell-script-into-commandtoexecute/17916](https://discuss.hashicorp.com/t/how-to-use-templatefile-to-pass-a-powershell-script-into-commandtoexecute/17916)  
+  
+  
+**Modules**
+
 Should I rewrite to add those?
 
 What about modules from the register?
