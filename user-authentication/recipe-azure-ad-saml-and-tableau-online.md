@@ -10,7 +10,7 @@ Microsoft provides Azure AD apps that can be used to simplify the integration be
 
 ## Features
 
-The two apps have a different feature sets. The Tableau Online application supports the following three features, whereas Tableau Server does not support user provisioning.
+The two apps have a different feature sets. The Tableau Online application supports the following two features, whereas Tableau Server does not support user provisioning.
 
 1. SP-initiated SSO
 2. _REST API user provisioning_
@@ -171,4 +171,16 @@ You should advise your users to check the **Remember me** option when signing in
 **Keep me signed In \(KMSI\)**
 
 As part of the Azure AD flow you are asked whether you want to stay signed in to the service. I would also ensure users to select this to prevent them having to input credentials again for an extended period of time. 
+
+## Tableau Server
+
+The Tableau Server Azure AD app supports SP-initiated sign on. 
+
+### Configuration
+
+Downloading the metadata file from Tableau Server and then uploading to Azure AD simplifies the first steps in configuring the IdP. This gives you the correct URLs at least in my instance:
+
+![](../.gitbook/assets/image%20%28107%29.png)
+
+ 
 

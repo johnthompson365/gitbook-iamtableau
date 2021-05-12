@@ -45,7 +45,9 @@ In short, no. If you import an Active Directory user group, Tableau will import 
 
 With LDAP you can choose the exact attribute in their identity store as the username. If this is a current installation then it may need content migration because I don’t believe it can do an update of the attribute and have Tableau update the repository.
 
-### 
+### How do I can I use sAMAccountName with Azure AD?
+
+Conveniently, if you already synchronize your directory to Azure AD then there is the onpremisessAMAccountName attribute
 
 ### What happens if you have multiple UPN suffixes?
 
@@ -75,15 +77,9 @@ If Tableau Server connects to multiple domains, you must also specify the other 
 
 {% embed url="https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/assigning-domain-names" %}
 
-
-
 ### 
 
-### SAML
 
-What does this mean for SAML?
-
-SAML Authentication Fails in Multiple Domain Environment??
 
 
 
