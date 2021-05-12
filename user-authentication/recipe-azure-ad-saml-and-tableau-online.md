@@ -1,12 +1,12 @@
 ---
-description: '1kg of Azure AD, 500g of SAML, and 100g of TOL'
+description: '1kg of Azure AD, 500g of SAML, and 100g of TOL and 100g of TS'
 ---
 
 # Recipe: Azure AD and Tableau
 
 ## Scope
 
-Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. The initial release of this article focuses on Tableau Online and SAML configuration. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works. 
+Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works. 
 
 ## Features
 
@@ -174,7 +174,7 @@ As part of the Azure AD flow you are asked whether you want to stay signed in to
 
 ## Tableau Server
 
-The Tableau Server Azure AD app supports SP-initiated sign on. 
+The Tableau Server Azure AD app supports SP-initiated sign on. You need to manage provisioning separately.
 
 ### Configuration
 
@@ -192,13 +192,15 @@ But if you go to the Server UI it asks you to match these assertions.
 
 ![The UI shows this...](../.gitbook/assets/image%20%28116%29.png)
 
-The default claims defined in the Azure AD app just work and shouldn't require changing.
+The default claims defined in the Azure AD app actually just work and shouldn't require changing.
 
 ![The default Azure app gives you this...](../.gitbook/assets/image%20%28107%29.png)
 
 When you look closer at the claims:
 
 ![](../.gitbook/assets/image%20%28115%29.png)
+
+These are the results from SAML trace for a successful login.
 
 ![](../.gitbook/assets/image%20%28112%29.png)
 
