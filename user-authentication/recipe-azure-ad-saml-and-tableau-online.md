@@ -186,25 +186,29 @@ Downloading the metadata file from Tableau Server and then uploading to Azure AD
 
 The claims we define in our docs are:
 
-![Our docs ask for this...](../.gitbook/assets/image%20%28113%29.png)
+![Our docs ask for this...](../.gitbook/assets/image%20%28114%29.png)
 
 But if you go to the Server UI it asks you to match these assertions.
 
-![The UI shows this...](../.gitbook/assets/image%20%28116%29.png)
+![The UI shows this...](../.gitbook/assets/image%20%28117%29.png)
 
-The default claims defined in the Azure AD app actually just work and shouldn't require changing.
+The default claims defined in the Azure AD app actually just work and shouldn't require changing but include unnecessary claims.
 
 ![The default Azure app gives you this...](../.gitbook/assets/image%20%28107%29.png)
 
-When you look closer at the claims:
+When you look closer at the claims it also shows the Name ID which actually contradicts our docs, but again works.
 
-![](../.gitbook/assets/image%20%28115%29.png)
+![](../.gitbook/assets/image%20%28116%29.png)
 
 These are the results from SAML trace for a successful login.
 
-![](../.gitbook/assets/image%20%28112%29.png)
+![](../.gitbook/assets/image%20%28113%29.png)
 
 ![](../.gitbook/assets/image%20%28109%29.png)
+
+### The Minimum!
+
+So I'll go through the same process again and get down to what is actually needed...
 
 
 
@@ -214,11 +218,11 @@ These are the results from SAML trace for a successful login.
 
 1\) Remember to add your user to the App in Azure AD first.
 
-![](../.gitbook/assets/image%20%28111%29.png)
+![](../.gitbook/assets/image%20%28112%29.png)
 
 2\) Ensure that you use test it with an account that is synchronised from Active Directory. 
 
 I used an Azure AD created identity and it didn't have an on-premisessAMAccountName that matches the username in Tableau. So it didn't pass the username attribute as required by Tableau.
 
-![](../.gitbook/assets/image%20%28114%29.png)
+![](../.gitbook/assets/image%20%28115%29.png)
 

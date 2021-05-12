@@ -128,7 +128,7 @@ After completing any configuration I usually go through and write validation tes
 
 It is simple to get up and running with Tableau and Okta using the provided apps from Okta for both Tableau Online and Server. The key point to understand are the features provided by each app. The Tableau Online app provides support for SCIM user and group provisioning. The Tableau Server app purely delivers SAML authentication \(no SCIM\), neither apps support IdP-Initiated SLO.
 
-## User Provisioning
+## Draft: User Provisioning
 
 Tableau Online supports SCIM User provisioning. As mentioned above the Okta TOL app has provisioning built into it. The Okta app has options to configure provisioning users from Okta to the App and from Tableau to Okta but there are nuances that you need to be aware of.
 
