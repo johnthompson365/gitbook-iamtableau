@@ -39,7 +39,13 @@ DataExplorationDB
 
 ### Tested Connecting with OAuth
 
+Basic Admin setup:
+
 {% embed url="https://docs.microsoft.com/en-us/azure/synapse-analytics/get-started-add-admin" %}
+
+Best Practice:
+
+{% embed url="https://docs.microsoft.com/en-us/azure/synapse-analytics/security/how-to-set-up-access-control" %}
 
 
 

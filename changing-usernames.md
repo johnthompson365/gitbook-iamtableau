@@ -48,11 +48,31 @@ In short, no these exceptions do not occur if you sync an Active Directory user 
 
 ### What are the options if you must use/change to UPN?
 
-If you have an Active Directory External Identity store then you must change from that to either local or LDAP. You can make an LDAP connection to AD and choose the exact attribute in their identity store as the username. If this is a current installation then it may need content migration because I don’t believe it can do an update of the attribute and have Tableau update the repository.
+If you have an Active Directory External Identity store then you must change from that to either local or LDAP. You can make an LDAP connection to AD and choose the exact attribute in their identity store as the username. If this is a current installation then it may need content migration because I don’t believe it can do an update of the attribute and have Tableau update the repository. 
+
+Options - 
+
+1\) LDS to abstract AD from Tableau
+
+2\) Local Identity Store \(requires provisioning of users at scale\)
+
+3\) LDAP
+
+Migration:
+
+At a 'very' high level:
+
+Migrate the content and map the user to the new username
+
+Site Export and Import
+
+
 
 ### How do I use sAMAccountName with Azure AD?
 
 Conveniently, if you already synchronize your directory to Azure AD then there is the `onpremisessAMAccountName` attribute. This is available to be passed as a claim in your SAML authentication flow to match your on-premises Active Directory provisioned Tableau user. This is described in more detail [here](https://johnthompson365.gitbook.io/iamtableau/user-authentication/recipe-azure-ad-saml-and-tableau-online#tableau-server).
+
+This challenge here is for users that are authored in Azure AD and not on-premises. If you continue to use on-premises AD as your identity store then these users will not have an account, and therefore the attribute will not be sync'ed.
 
 ### What happens if you have multiple UPN suffixes?
 
