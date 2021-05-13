@@ -1,12 +1,18 @@
+---
+description: >-
+  Yes, ThOse caPitals are coRRect:
+  https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties
+---
+
 # sAMAccountName & userPrincipalName
 
-The userPrincipalName is becoming the standard in many companies as **the** most important identity attribute in their directory.
+The userPrincipalName is becoming the standard in many companies as the most important identity attribute in their directory.
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/secauthn/user-name-formats" %}
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties" %}
 
-When importing users into Tableau Server this relies on the sAMAccountName. More specifically it would import your user from Active Directory in the full `domain\sAMAccountName` format and this would end up as your Tableau username.
+When importing users into Tableau Server this relies on the sAMAccountName and it becomes your Tableau Server username.
 
 ![](.gitbook/assets/image%20%2881%29.png)
 
