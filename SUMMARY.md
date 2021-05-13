@@ -8,6 +8,10 @@
 * [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
 * [Recipe: Azure AD and Tableau](user-authentication/recipe-azure-ad-saml-and-tableau-online.md)
 
+---
+
+* [Notes: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
+
 ## DATA AUTHENTICATION
 
 * [Recipe: SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
@@ -39,8 +43,4 @@
 ## Drafts
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
-
----
-
-* [Draft: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
 

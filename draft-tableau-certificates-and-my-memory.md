@@ -2,7 +2,7 @@
 description: How to use POSH-ACME certs with Tableau
 ---
 
-# Draft: Server & SAML Certificates and my memory
+# Notes: Server & SAML Certificates and my memory
 
 The instructions on certificate usage for Tableau server and SAML are not memorable to me. Not much is, so I need to write this stuff down.
 
