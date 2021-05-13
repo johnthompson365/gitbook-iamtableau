@@ -1,7 +1,5 @@
 ---
-description: >-
-  Yes, ThOse caPitals are coRRect:
-  https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties
+description: 'Yes, ThOse caPitals are coRRect'
 ---
 
 # sAMAccountName & userPrincipalName
