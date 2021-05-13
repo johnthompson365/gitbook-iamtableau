@@ -17,11 +17,11 @@ The two apps have a different feature sets. The Tableau Online application suppo
 
 Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout \(SLO\) is not possible due to Azure AD's use fo HTTP-Redirect.
 
-#### Azure AD Premium Trial
+#### M365 Developer Program
 
-{% embed url="https://azure.microsoft.com/en-us/trial/get-started-active-directory/" %}
+{% embed url="https://developer.microsoft.com/en-us/microsoft-365/dev-program" %}
 
-For 30 day access to AD premium, which would include Enterprise Applications and SAML you can signup above! 
+This gives you a free renewable 90 day M365 subscription, and M365 gives you Azure AD! Nice.
 
 ## Documentation
 
