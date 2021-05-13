@@ -4,13 +4,13 @@ description: 'Yes, ThOse caPitals are coRRect'
 
 # sAMAccountName & userPrincipalName
 
-In the beginning was...
+### In the beginning was...
 
 `sAMAccountName` which was an attribute used as the logon name for earlier versions of Windows, NT4 and all that. When Microsoft realized the internet was a thing they introduced a logon name that was [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) compliant the `userPrincipalName` \(UPN\). It wasn't broadly adopted until Office 365 required its use as the primary logon name for their cloud services. Since then the UPN has become the standard in many companies as the most important logon identity attribute in their directory.
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties" %}
 
-A common deployment for Tableau Server is for it to be integrated with Active Directory as the external identity store. As Tableau Server has been around for a while it still uses `sAMAccountName` when you sync users into the repository from Active Directory; and this then becomes your Tableau Server username.
+A common deployment for Tableau Server integrates the server with Active Directory as the external identity store. As Tableau Server has been around for a while it still uses `sAMAccountName` when you sync users into the repository from Active Directory; and this then becomes your Tableau Server username.
 
 ![](.gitbook/assets/image%20%2881%29.png)
 
@@ -46,37 +46,26 @@ In short, no these exceptions do not occur if you sync an Active Directory user 
 
 > If user names were inadvertently imported using UPN names, you can delete the accounts in Tableau Server and then reimport those accounts using the `sAMAccountName` value for the user name
 
-### What are the options if you must use/change to UPN?
+### What are the options if you must use/change to sync'ing UPN?
 
-If you have an Active Directory External Identity store then you must change from that to either local or LDAP. You can make an LDAP connection to AD and choose the exact attribute in their identity store as the username. If this is a current installation then it may need content migration because I don’t believe it can do an update of the attribute and have Tableau update the repository. 
-
-Options - 
-
-1\) LDS to abstract AD from Tableau
+1\) Use Active Directory Lightweight Directory Services to present AD as an LDAP service to Tableau
 
 2\) Local Identity Store \(requires provisioning of users at scale\)
 
-3\) LDAP
+3\) Use LDAP
 
-Migration:
+Migration considerations at a 'very' high level:
 
-At a 'very' high level:
+* Map the user to the new username
+* Migrate the content potentially using Site Export and Import
 
-Migrate the content and map the user to the new username
-
-Site Export and Import
-
-
-
-### How do I use sAMAccountName with Azure AD?
+### How do I use sAMAccountName with Azure AD Authentication?
 
 Conveniently, if you already synchronize your directory to Azure AD then there is the `onpremisessAMAccountName` attribute. This is available to be passed as a claim in your SAML authentication flow to match your on-premises Active Directory provisioned Tableau user. This is described in more detail [here](https://johnthompson365.gitbook.io/iamtableau/user-authentication/recipe-azure-ad-saml-and-tableau-online#tableau-server).
 
-This challenge here is for users that are authored in Azure AD and not on-premises. If you continue to use on-premises AD as your identity store then these users will not have an account, and therefore the attribute will not be sync'ed.
-
 ### What happens if you have multiple UPN suffixes?
 
-What's a UPN suffix?
+#### What's a UPN suffix?
 
 > Active Directory Domain Services \(AD DS\) domains have two types of names: Domain Name System \(DNS\) names and NetBIOS names. In general, both names are visible to end users. The DNS names of Active Directory domains include two parts, a prefix and a suffix. When creating domain names, first determine the DNS prefix. This is the first label in the DNS name of the domain. The suffix is determined when you select the name of the forest root domain.
 
@@ -90,11 +79,15 @@ UPN suffixes are then assigned to your users within your Active Directory forest
 
 ![A user with a different UPN suffix to the ](.gitbook/assets/image%20%28102%29.png)
 
+As you can see below you can have a different UPN suffix but still be in the same domain.
+
 ![Repository](.gitbook/assets/image%20%28103%29.png)
+
+This is also confirmed by running `tabcmd listdomains` where I still only have the THOMPSON365 domain visible to the server.
 
 ![tabcmd listdomains](.gitbook/assets/image%20%28118%29.png)
 
-If you logon to Tableau with a different UPN suffix than your 'Domain Name' then you will receive this error.
+However, if you logon to Tableau with a different UPN suffix than your 'Domain Name' then you will receive this error.
 
 ![](.gitbook/assets/image%20%2882%29.png)
 
@@ -102,13 +95,9 @@ Checking out the vizportal logs:
 
 ![](.gitbook/assets/image%20%2880%29.png)
 
-You need to ensure that all of your suffixes are added to the Tableau domain allow list.
+You need to ensure that all of your suffixes are added to the Tableau domain allow list similar to if you were working with a multi-domain deployment. 
 
-[https://help.tableau.com/current/server/en-us/users\_manage\_ad.htm\#support-for-multiple-domains](https://help.tableau.com/current/server/en-us/users_manage_ad.htm#support-for-multiple-domains)
-
-If Tableau Server connects to multiple domains, you must also specify the other domains that Tableau Server connects to, by setting the `wgserver.domain.acceptlist` option with TSM. 
-
-[https://help.tableau.com/current/server/en-us/cli\_configuration-set\_tsm.htm\#wgserver-domain-acceptlist](https://help.tableau.com/current/server/en-us/cli_configuration-set_tsm.htm#wgserver-domain-acceptlist)
+{% embed url="https://help.tableau.com/current/server/en-us/cli\_configuration-set\_tsm.htm\#wgserver-domain-acceptlist" %}
 
 ![](.gitbook/assets/image%20%28105%29.png)
 
