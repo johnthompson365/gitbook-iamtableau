@@ -222,7 +222,7 @@ So I'll go through the same process again and get down to what is actually neede
 
 2\) Ensure that you use test it with an account that is synchronised from Active Directory. 
 
-I used an Azure AD created identity and it didn't have an on-premisessAMAccountName that matches the username in Tableau. So it didn't pass the username attribute as required by Tableau.
+I used an Azure AD created identity and it didn't have an `on-premisessAMAccountName` that matches the username in Tableau. So it didn't pass the username attribute as required by Tableau.
 
 ![](../.gitbook/assets/image%20%28115%29.png)
 

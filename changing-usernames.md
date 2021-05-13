@@ -92,6 +92,8 @@ UPN suffixes are then assigned to your users within your Active Directory forest
 
 ![Repository](.gitbook/assets/image%20%28103%29.png)
 
+![tabcmd listdomains](.gitbook/assets/image%20%28118%29.png)
+
 If you logon to Tableau with a different UPN suffix than your 'Domain Name' then you will receive this error.
 
 ![](.gitbook/assets/image%20%2882%29.png)
