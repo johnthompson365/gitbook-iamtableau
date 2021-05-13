@@ -6,6 +6,10 @@ description: >-
 
 # sAMAccountName & userPrincipalName
 
+In the beginning was...
+
+sAMAccountName which was an attribute that defined the logon name for early version of Windows.  
+
 The userPrincipalName is becoming the standard in many companies as the most important identity attribute in their directory.
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/secauthn/user-name-formats" %}
