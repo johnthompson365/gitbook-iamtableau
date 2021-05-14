@@ -101,3 +101,9 @@ You need to ensure that all of your suffixes are added to the Tableau domain all
 
 ![](.gitbook/assets/image%20%28105%29.png)
 
+#### Sync/Logging strangeness
+
+I can add users as part of a group with a different UPN suffix and do not receive the DEBUG event that it has recognised the user with a different UPN.
+
+![](.gitbook/assets/image%20%28119%29.png)
+
