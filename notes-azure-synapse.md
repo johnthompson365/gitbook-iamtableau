@@ -61,5 +61,5 @@ Best Practice:
 
 {% embed url="https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell" %}
 
-
+[https://www.sqlshack.com/sql-on-demand-pools-in-azure-synapse-analytics/](https://www.sqlshack.com/sql-on-demand-pools-in-azure-synapse-analytics/)
 
