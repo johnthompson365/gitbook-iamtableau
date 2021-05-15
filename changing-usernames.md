@@ -38,15 +38,13 @@ _Exception 2: If the user name you specify includes an `@`symbol in the UPN pref
 
 ![](.gitbook/assets/image%20%2896%29.png)
 
+> If user names were inadvertently imported using UPN names, you can delete the accounts in Tableau Server and then reimport those accounts using the `sAMAccountName` value for the user name
+
 ### So do these exceptions occur with Groups?
 
 In short, no these exceptions do not occur if you sync an Active Directory user group. Tableau will sync all users from the group using the `sAMAccountName`. Importing with Groups has a number of advantages anyway with Grant Licence on Login for example.
 
-### But I've already sync'd my users
-
-> If user names were inadvertently imported using UPN names, you can delete the accounts in Tableau Server and then reimport those accounts using the `sAMAccountName` value for the user name
-
-### What are the options if you must use/change to sync'ing UPN?
+### What are the options if you must use/change to UPN as your Tableau username?
 
 1\) Use Active Directory Lightweight Directory Services to present AD as an LDAP service to Tableau
 
@@ -54,7 +52,7 @@ In short, no these exceptions do not occur if you sync an Active Directory user 
 
 3\) Use LDAP
 
-Migration considerations at a 'very' high level:
+Migration considerations at a _very_ high level:
 
 * Map the user to the new username
 * Migrate the content potentially using Site Export and Import
