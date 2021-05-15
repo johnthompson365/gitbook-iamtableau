@@ -6,7 +6,7 @@ description: 'Yes, ThOse caPitals are coRRect'
 
 ### In the beginning was...
 
-`sAMAccountName` which was an attribute used as the logon name for earlier versions of Windows; NT4 and all that. When Microsoft realized the internet was a thing, they introduced a logon name that was [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) compliant the `userPrincipalName` \(UPN\). It wasn't broadly adopted until Office 365 required its use as the primary logon name for their cloud services. Since then the UPN has become the standard in many companies as the most important logon identity attribute in their directory.
+`sAMAccountName` which was an attribute used as the logon name for earlier versions of Windows; NT4 and all that. When Microsoft realized the internet was a thing, they introduced a logon name that was [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) compliant the `userPrincipalName` \(UPN\). It wasn't broadly adopted \(except for PKI\) until Office 365 required its use as the primary logon name for their cloud services. Since then the logon name has coalesced around UPN as the standard and the most important logon identity attribute in their directory.
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties" %}
 
@@ -20,7 +20,7 @@ A common deployment for Tableau Server integrates the server with Active Directo
 
 ### Exceptions to sAMAccountName \(support issues\)
 
-There are some exceptions to this AD user sync logic described in our [docs](https://help.tableau.com/current/server/en-us/users_manage_ad.htm) when the normal sync of`sAMAccountName` doesn't work. But this is not how to import UPN as a choice.
+There are some exceptions to this AD user sync logic described in our [docs](https://help.tableau.com/current/server/en-us/users_manage_ad.htm) when the normal sync of`sAMAccountName` doesn't work. But this is **not** how to import UPN as a choice.
 
 _Exception 1: If the UPN prefix of the user specified is greater than 20 characters, **and** the search string matches the full UPN, **and** is entered with the Windows login format \(domain\UPN\)._
 
@@ -40,7 +40,7 @@ _Exception 2: If the user name you specify includes an `@`symbol in the UPN pref
 
 ### So do these exceptions occur with Groups?
 
-In short, no these exceptions do not occur if you sync an Active Directory user group. Tableau will sync all users from the group using the `sAMAccountName`.
+In short, no these exceptions do not occur if you sync an Active Directory user group. Tableau will sync all users from the group using the `sAMAccountName`. Importing with Groups has a number of advantages anyway with Grant Licence on Login for example.
 
 ### But I've already sync'd my users
 
