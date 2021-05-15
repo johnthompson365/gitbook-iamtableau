@@ -10,12 +10,12 @@ Microsoft provides Azure AD apps that can be used to simplify the integration be
 
 ## Features
 
-The two apps have a different feature sets. The Tableau Online application supports the following two features, whereas Tableau Server does not support user provisioning.
+The two apps have a different feature sets. The Tableau Online application supports the following two features, whereas Tableau Server only supports SSO.
 
 1. SP-initiated SSO
 2. _REST API user provisioning_
 
-Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout \(SLO\) is not possible due to Azure AD's use fo HTTP-Redirect.
+Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout \(SLO\) is not possible due to our use of HTTP-Post bindings.
 
 #### M365 Developer Program
 
@@ -48,7 +48,7 @@ There are two main properties that TOL is interested in, your **Email** and **Di
 
 ### Claims
 
-Claims are widely referred to in Azure AD but not really in other major IdP's like Okta or OneLogin as they tend to refer to attributes. Claims are information about user and groups that are shared between the identity provider and the service provider in the SAML token. In the SAML token they are usually contained in the Attribute Statement, so you only really need to consider them as attributes. A claim type provides context for the claim value. It is usually expressed as a Uniform Resource Identifier \(URI\). This URI is what is required to be put into the TOL configuration.
+Claims are widely referred to in Azure AD but not really in other major IdP's like Okta or OneLogin as they tend to refer to attributes. Claims are information about user and groups that are shared between the identity provider and the service provider in the SAML token. In the SAML token they are usually contained in the Attribute Statement, so you only really need to consider them as attributes. A _claim type_ provides context for the _claim value_. It is usually expressed as a Uniform Resource Identifier \(URI\). This URI is what is required to be put into the TOL configuration.
 
 [SAML Token Claims Reference](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-saml-tokens)
 
@@ -113,6 +113,8 @@ We ask for the Email attribute in the configuration which in turn is used as the
 
 It is not possible to map directly to the UPN claim as that is one of the [restricted claim sets ](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)in Azure AD. These _can't be modified using policy. The data source cannot be changed, and no transformation is applied when generating these claims_. So in this instance that is why the Name claim is used instead.
 
+> UPDATE: There is a lot of new functionality in preview for Azure AD to allow you to create claim types that was previously restricted. [How to: Customize claims emitted in tokens for a specific app in a tenant \(Preview\)](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping)
+
 You can choose to map `mail` or`userPrincipalName` as the `Email` in TOL. However as there isn't a separate email address attribute in TOL whatever is defined as `Email` must be a working email address as that value is what will be used to send out the subscriptions you have setup to views or workbooks.
 
 ![Workbook subscriptions](../.gitbook/assets/image%20%2869%29.png)
@@ -145,7 +147,7 @@ By deleting the 'name' claim URI from the setting in Tableau Online \(shown belo
 
 ![No claims defined for Email attribute](../.gitbook/assets/image%20%2875%29.png)
 
-You can then login successfully by only relying on the name identifier, but you won't get any useful information like First Name and Surname.
+You can then login successfully with only relying on the name identifier, but you won't get any useful information like `First Name` and `Surname`.
 
 ### The Recommended!
 
@@ -222,7 +224,7 @@ So I'll go through the same process again and get down to what is actually neede
 
 2\) Ensure that you use test it with an account that is synchronised from Active Directory. 
 
-I used an Azure AD created identity and it didn't have an `on-premisessAMAccountName` that matches the username in Tableau. So it didn't pass the username attribute as required by Tableau.
+I used an Azure AD created identity and it didn't have an `on-premisessAMAccountName` that matches the username in Tableau. So it didn't pass the username attribute as required by the Tableau server identity store and claims.
 
 ![](../.gitbook/assets/image%20%28115%29.png)
 

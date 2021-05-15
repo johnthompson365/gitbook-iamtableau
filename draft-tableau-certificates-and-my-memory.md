@@ -38,7 +38,7 @@ Posh-ACME provides you with everything you need:
 * fullchain.cer \(Base64 encoded PEM with cert+chain\) 
 * fullchain.pfx \(PKCS12 container with cert+key+chain\)
 
-If you are using Linux then knock yourself out with then try [certbot](https://certbot.eff.org/).
+If you are using Linux then knock yourself out and try [certbot](https://certbot.eff.org/).
 
 ### Updating your certificate
 
