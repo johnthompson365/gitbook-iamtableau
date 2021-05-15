@@ -2,19 +2,19 @@
 
 * [Welcome friends\*](README.md)
 
-## User Authentication
+## User Access
 
-* [Recipe: OneLogin with Tableau](user-authentication/recipe-onelogin-tableau.md)
-* [Okta apps and Tableau](user-authentication/tableau-okta-saml-apps.md)
-* [Recipe: Azure AD and Tableau](user-authentication/recipe-azure-ad-saml-and-tableau-online.md)
+* [Recipe: OneLogin with Tableau](user-access/recipe-onelogin-tableau.md)
+* [Okta apps and Tableau](user-access/tableau-okta-saml-apps.md)
+* [Recipe: Azure AD and Tableau](user-access/recipe-azure-ad-saml-and-tableau-online.md)
 
 ---
 
 * [Notes: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
 
-## DATA AUTHENTICATION
+## DATA ACCESS
 
-* [Recipe: SharePoint Lists and ADFS](data-authentication/sharepoint-lists.md)
+* [Recipe: SharePoint Lists and ADFS](data-access/sharepoint-lists.md)
 
 ## Identity
 

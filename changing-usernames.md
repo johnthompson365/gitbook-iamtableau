@@ -6,7 +6,7 @@ description: 'Yes, ThOse caPitals are coRRect'
 
 ### In the beginning was...
 
-`sAMAccountName` which was an attribute used as the logon name for earlier versions of Windows, NT4 and all that. When Microsoft realized the internet was a thing they introduced a logon name that was [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) compliant the `userPrincipalName` \(UPN\). It wasn't broadly adopted until Office 365 required its use as the primary logon name for their cloud services. Since then the UPN has become the standard in many companies as the most important logon identity attribute in their directory.
+`sAMAccountName` which was an attribute used as the logon name for earlier versions of Windows; NT4 and all that. When Microsoft realized the internet was a thing they introduced a logon name that was [RFC 822](https://www.ietf.org/rfc/rfc0822.txt) compliant the `userPrincipalName` \(UPN\). It wasn't broadly adopted until Office 365 required its use as the primary logon name for their cloud services. Since then the UPN has become the standard in many companies as the most important logon identity attribute in their directory.
 
 {% embed url="https://docs.microsoft.com/en-us/windows/win32/ad/naming-properties" %}
 
