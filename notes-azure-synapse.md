@@ -61,5 +61,21 @@ Best Practice:
 
 {% embed url="https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell" %}
 
-[https://www.sqlshack.com/sql-on-demand-pools-in-azure-synapse-analytics/](https://www.sqlshack.com/sql-on-demand-pools-in-azure-synapse-analytics/)
+{% embed url="https://www.sqlshack.com/sql-on-demand-pools-in-azure-synapse-analytics/" %}
+
+
+
+### SQL Roles and Permissions
+
+{% embed url="https://docs.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?tabs=azure-powershell\#create-contained-users-mapped-to-azure-ad-identities" %}
+
+> Database users \(with the exception of administrators\) cannot be created using the Azure portal. Azure roles are not propagated to the database in SQL Database, the SQL Managed Instance, or Azure Synapse. Azure roles are used for managing Azure Resources, and do not apply to database permissions. For example, the **SQL Server Contributor** role does not grant access to connect to the database in SQL Database, the SQL Managed Instance, or Azure Synapse. The access permission must be granted directly in the database using Transact-SQL statements.
+
+To create a contained database user representing an Azure AD or federated domain group, provide the display name of a security group:
+
+```text
+CREATE USER [ICU Nurses] FROM EXTERNAL PROVIDER;
+```
+
+![](.gitbook/assets/image%20%28120%29.png)
 

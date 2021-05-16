@@ -228,3 +228,11 @@ I used an Azure AD created identity and it didn't have an `on-premisessAMAccount
 
 ![](../.gitbook/assets/image%20%28115%29.png)
 
+## Provisioning
+
+### Enterprise Applications
+
+You need to assign users/groups to the Azure AD application before they can sign in to the published app. The consideration below affects the use of nested AAD groups.
+
+![](../.gitbook/assets/image%20%28121%29.png)
+
