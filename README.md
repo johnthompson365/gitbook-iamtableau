@@ -6,7 +6,7 @@ description: Thanks for visiting my book
 
 I recently read a great quote from [@KelseyHightower](https://twitter.com/kelseyhightower/status/1343116529664069634)...
 
-## "Question everything and share what you learn".
+## ..."Question everything and share what you learn".
 
 Well, this is me sharing.
 
