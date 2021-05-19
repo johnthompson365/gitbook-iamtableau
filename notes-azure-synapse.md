@@ -79,3 +79,5 @@ CREATE USER [ICU Nurses] FROM EXTERNAL PROVIDER;
 
 ![](.gitbook/assets/image%20%28120%29.png)
 
+[https://docs.microsoft.com/en-us/sql/connect/jdbc/connecting-using-azure-active-directory-authentication?view=sql-server-ver15\#connecting-using-access-token](https://docs.microsoft.com/en-us/sql/connect/jdbc/connecting-using-azure-active-directory-authentication?view=sql-server-ver15#connecting-using-access-token)
+
