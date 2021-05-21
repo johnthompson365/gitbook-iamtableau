@@ -20,7 +20,7 @@
 
 ---
 
-* [sAMAccountName & userPrincipalName](changing-usernames.md)
+* [sAMAccountName & userPrincipalName](samaccountname-and-upn.md)
 
 ## Terraform
 
