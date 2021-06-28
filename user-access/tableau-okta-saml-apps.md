@@ -128,6 +128,14 @@ After completing any configuration I usually go through and write validation tes
 
 It is simple to get up and running with Tableau and Okta using the provided apps from Okta for both Tableau Online and Server. The key point to understand are the features provided by each app. The Tableau Online app provides support for SCIM user and group provisioning. The Tableau Server app purely delivers SAML authentication \(no SCIM\), neither apps support IdP-Initiated SLO.
 
+## Integrating with Active Directory
+
+There are a number of articles that give great guidance on integrating Okta with Active Directory.
+
+{% embed url="https://interworks.com/blog/2020/05/06/connecting-tableau-server-to-okta-universal-directory/" %}
+
+
+
 ## Draft: User Provisioning
 
 Tableau Online supports SCIM User provisioning. As mentioned above the Okta TOL app has provisioning built into it. The Okta app has options to configure provisioning users from Okta to the App and from Tableau to Okta but there are nuances that you need to be aware of.
@@ -154,7 +162,27 @@ Despite what the screenshot shows this isn't the full story there are limitation
 
 #### Update User Attributes
 
+#### 
+
+**Matching Users**
+
+The Okta TOL app is designed to _create or **link** users in TOL when assigning the app to a user in Okta._ I wanted to test out the link part of it as well as create!
+
+When enabling the provisioning of my chosen AD group I intentionally picked a group that already had a user enabled in TOL \(Ahmed Kroner\). After the assignment of the AD group it reported a couple of errors. These were related to a new user from AD not in TOL \(Alona Marr\) and a Okta user that was not part of the provisioned AD group \(John Thompson\).  
+
+![](../.gitbook/assets/image%20%28125%29.png)
+
+Login successful with Ahmed - showed that the account was linked.
+
+Alona I had to remove the AD group and assign it a second time to the app for the user to be provisioned.
+
 #### Deactivate Users
+
+![](../.gitbook/assets/image%20%28122%29.png)
+
+
+
+![](../.gitbook/assets/image%20%28127%29.png)
 
 ### To Okta
 
