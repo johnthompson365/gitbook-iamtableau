@@ -53,16 +53,19 @@ The key setup configuration items for SAML are described below, I tested TOL but
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">Tableau Online</td>
+      <td style="text-align:left">Tableau Online and Server</td>
       <td style="text-align:left"><b>SAML entity ID</b>
       </td>
-      <td style="text-align:left">The entity ID uniquely identifies your Tableau Server installation to
-        the IdP. It represents a system entity in metadata, which is a SAML service,
-        such as an IdP or an SP as you could have multiple listed in the metadata.
-        The value of the entityID attribute SHOULD be the canonical URL of the
-        entity&apos;s metadata document. An example from TOL: <b>entityID=&quot;</b> 
-        <a
-        href="https://sso.online.tableau.com/public/sp/metadata?alias=4b728bd1-df88-xxxx-xxxx-xxxxxxxxxxxx">https://sso.online.tableau.com/public/sp/metadata?alias=4b728bd1-df88-xxxx-xxxx-xxxxxxxxxxxx</a><b>&quot;</b>
+      <td style="text-align:left">
+        <p>The entity ID uniquely identifies your Tableau Server installation to
+          the IdP. It represents a system entity in metadata, which is a SAML service,
+          such as an IdP or an SP as you could have multiple listed in the metadata.
+          The value of the entityID attribute SHOULD be the canonical URL of the
+          entity&apos;s metadata document.</p>
+        <p></p>
+        <p>An example from TOL: <b>entityID=&quot;</b>  <code>https://sso.online.tableau.com/public/sp/metadata?alias=4b728bd1-df88-xxxx-xxxx-xxxxxxxxxxxx&quot;</code>An
+          example from Server: <b>entityID=&quot;</b><code>https://tableau-server&quot;</code>
+        </p>
       </td>
     </tr>
     <tr>
@@ -110,6 +113,8 @@ The key setup configuration items for SAML are described below, I tested TOL but
     </tr>
   </tbody>
 </table>
+
+
 
 ## Validation Tests
 
