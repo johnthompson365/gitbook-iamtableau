@@ -21,14 +21,17 @@ For my lab I want the simplest configuration so want to be able to use the same 
 1. ...if you want to use the same certificate for SSL and SAML, you must use a key file that is _not_ passphrase protected.
 2. ...Confirm that the certificate includes only the certificate that applies to Tableau Server and not any other certificates or keys.
 3. SSL certificate chain file: A certificate chain file is required for Tableau Desktop on the Mac and for Tableau Prep Builder on the Mac and Tableau Prep Builder on Windows. The chain file is also required for the Tableau Mobile app if the certificate chain for Tableau Server is not trusted by the iOS or Android operating system on the mobile device.
-
-
+4. All certificate files must be valid PEM-encoded X509 certificates with the extension `.crt`.
 
 If you are running Windows follow the Tutorial linked below to get your certificates:
 
 {% embed url="https://github.com/rmbolger/Posh-ACME/blob/main/Tutorial.md" %}
 
-Posh-ACME provides you with everything you need:
+{% hint style="info" %}
+Remember to delete your TXT records after you have created them
+{% endhint %}
+
+Posh-ACME provides you with everything you need and stores the certificates in `%LOCALAPPDATA%\Posh-ACME` on Windows or `~/.config/Posh-ACME` on Linux
 
 * **cert.cer \(Base64 encoded PEM certificate\)** 
 * **cert.key \(Base64 encoded PEM private key\)** 
@@ -39,6 +42,10 @@ Posh-ACME provides you with everything you need:
 * fullchain.pfx \(PKCS12 container with cert+key+chain\)
 
 If you are using Linux then knock yourself out and try [certbot](https://certbot.eff.org/).
+
+{% hint style="info" %}
+You can just rename the `.cer` file to be `.crt` 
+{% endhint %}
 
 ### Updating your certificate
 
