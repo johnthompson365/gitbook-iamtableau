@@ -130,13 +130,13 @@ It is simple to get up and running with Tableau and Okta using the provided apps
 
 ## Integrating with Active Directory
 
-There are a number of articles that give great guidance on integrating Okta with Active Directory.
+There are a number of articles that give great guidance on integrating Tableau, Okta and Active Directory.
 
-{% embed url="https://interworks.com/blog/2020/05/06/connecting-tableau-server-to-okta-universal-directory/" %}
+This article shows how you can deploy the Okta AD agent to synchronise users between Okta and Active Directory. Once you have all your AD users in Okta you can use the Okta Universal Directory's LDAP interface to bind with Tableau and import those users and groups in to Tableau, just as you would with any LDAP service. 
 
+{% embed url="https://interworks.com/blog/2020/05/06/connecting-tableau-server-to-okta-universal-directory/" caption="Great step by step recipe..." %}
 
-
-## Draft: User Provisioning
+## Draft: User Provisioning in Tableau Online
 
 Tableau Online supports SCIM User provisioning. As mentioned above the Okta TOL app has provisioning built into it. The Okta app has options to configure provisioning users from Okta to the App and from Tableau to Okta but there are nuances that you need to be aware of.
 

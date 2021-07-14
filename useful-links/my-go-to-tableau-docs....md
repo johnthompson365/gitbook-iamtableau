@@ -50,3 +50,9 @@ description: Just to save Googling...
   </tbody>
 </table>
 
+## Encryption
+
+|  |  |
+| :--- | :--- |
+| Stack Overflow | [PKCS\#1 and PKCS\#8 format for RSA private key](https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key) |
+
