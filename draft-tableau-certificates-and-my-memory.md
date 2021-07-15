@@ -25,11 +25,7 @@ For my lab I want the simplest configuration so want to be able to use the same 
 
 If you are running Windows follow the Tutorial linked below to get your certificates:
 
-{% embed url="https://github.com/rmbolger/Posh-ACME/blob/main/Tutorial.md" %}
-
-{% hint style="info" %}
-Remember to delete your TXT records after you have created them
-{% endhint %}
+{% embed url="https://github.com/rmbolger/Posh-ACME/blob/main/Tutorial.md" caption="Great bit of software" %}
 
 Posh-ACME provides you with everything you need and stores the certificates in `%LOCALAPPDATA%\Posh-ACME` on Windows or `~/.config/Posh-ACME` on Linux
 
@@ -66,7 +62,7 @@ openssl rsa -in cert.key -out nopasscert.key
 openssl pkcs8 -in cert.key -traditional -nocrypt -out pkcsfingerscrossed.key  
 ```
 
-Useful docs reference docs I found were:
+Useful docs reference docs I found were PKCS formats are:
 
 [https://www.misterpki.com/pkcs8/ ](%20https://www.misterpki.com/pkcs8/%20
 )
@@ -75,7 +71,7 @@ Useful docs reference docs I found were:
 ](%20https://www.misterpki.com/pkcs8/%20
 )
 
-### Certificate file not uploading
+### ISSUE: Certificate file not uploading
 
 I attempted to update the cert.key a few times using the SAML configuration tsm command
 
