@@ -47,6 +47,34 @@ If you are using Linux then knock yourself out and try [certbot](https://certbot
 You can just rename the `.cer` file to be `.crt` 
 {% endhint %}
 
+### SiteSAML requirements
+
+I attempted to use the same Posh-ACME certificates for both the Server TLS and SAML. This worked without issue for Tableau Server-Wide SAML configuration. It did not work for Site SAML. I received the following error:
+
+> Expected private key stored in C:/ProgramData/Tableau/Tableau Server/data/tabsvc/config/vizportal\_0.20201.20.0427.1803/files/samlkeyfile.key to be a PEMKeyPair \(unencrypted PEM\), but got PrivateKeyInfo instead
+
+The confusing thing was that I knew the **cert.key** did not have an associated passphrase.
+
+However the **cert.key** provided is PKCS\#8. In our [SAML requirements](https://help.tableau.com/current/server/en-us/saml_requ.htm) we state that:
+
+> To use a password-protected key file, you must configure SAML with a RSA PKCS\#8 file. Note that a PKCS\#8 file with a null password is not supported.
+
+To resolve this I needed to convert the PKCS\#8 formatted private key to PKCS\#1. There are a number of ways to do this:
+
+```text
+openssl rsa -in cert.key -out nopasscert.key 
+openssl pkcs8 -in cert.key -traditional -nocrypt -out pkcsfingerscrossed.key  
+```
+
+Useful docs reference docs I found were:
+
+[https://www.misterpki.com/pkcs8/ ](%20https://www.misterpki.com/pkcs8/%20
+)
+
+[https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key  
+](%20https://www.misterpki.com/pkcs8/%20
+)
+
 ### Updating your certificate
 
 Click Reset and go through the standard steps of uploading your certificate files. Yes, it needs a restart.
