@@ -6,7 +6,7 @@ description: How to use POSH-ACME certs with Tableau
 
 The instructions on certificate usage for Tableau server and SAML are not memorable to me. Not much is, so I need to write this stuff down.
 
-### Tableau Official Guidance
+## Tableau Official Guidance
 
 The two docs that give the full details are here:
 
@@ -14,7 +14,7 @@ The two docs that give the full details are here:
 
 {% embed url="https://help.tableau.com/current/server/en-us/saml\_requ.htm\#Cert\_Name" %}
 
-### My Lab requirements
+## My Lab requirements
 
 For my lab I want the simplest configuration so want to be able to use the same certificate for both the server **and** SAML. The relevant requirements for me are:
 
@@ -47,7 +47,7 @@ If you are using Linux then knock yourself out and try [certbot](https://certbot
 You can just rename the `.cer` file to be `.crt` 
 {% endhint %}
 
-### SiteSAML requirements
+## SiteSAML requirements
 
 I attempted to use the same Posh-ACME certificates for both the Server TLS and SAML. This worked without issue for Tableau Server-Wide SAML configuration. It did not work for Site SAML. I received the following error:
 
@@ -75,7 +75,21 @@ Useful docs reference docs I found were:
 ](%20https://www.misterpki.com/pkcs8/%20
 )
 
-### Updating your certificate
+### Certificate file not uploading
+
+I attempted to update the cert.key a few times using the SAML configuration tsm command
+
+`tsm authentication saml configure --idp-entity-id  https://tabwin-tfvm.developatribe.com --idp-return-url https://tabwin-tfvm.developatribe.com --cert-file cert.crt --key-file nopasscert.key` 
+
+However, when I checked the key file I found it was updating even though TSM said the file upload was successful.
+
+![](.gitbook/assets/image%20%28129%29.png)
+
+![](.gitbook/assets/image%20%28128%29.png)
+
+A quick workaround was to just copy over the file to the location shown above and restart services. Not sure how supported that is but worked for me!
+
+## Updating your certificate
 
 Click Reset and go through the standard steps of uploading your certificate files. Yes, it needs a restart.
 
