@@ -13,6 +13,7 @@ description: Just to save Googling...
 | Robin Cottiss Github | [https://github.com/geordielad/snowflake-oauth](https://github.com/geordielad/snowflake-oauth) |
 | Robin Cottiss Github | [https://github.com/geordielad/tableau-aws-cognito-integration](https://github.com/geordielad/tableau-aws-cognito-integration) |
 | Tableau Help | [Connect to Tableau Repository with Tableau Desktop](https://help.tableau.com/current/server/en-us/perf_collect_server_repo.htm) |
+| TSM API | [Tableau Services Manager \(TSM\) API —The undocumented “Passwordless” Authentication](https://medium.com/starschema-blog/tableau-services-manager-tsm-api-the-undocumented-passwordless-authentication-9b76ed00119d) |
 
 
 
@@ -57,4 +58,6 @@ description: Just to save Googling...
 | Stack Overflow | [PKCS\#1 and PKCS\#8 format for RSA private key](https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key) |
 | PoshACME | [PowerShell ACME client to generate certificates using Lets Encrypt](https://github.com/rmbolger/Posh-ACME) |
 |  |  |
+
+General
 
