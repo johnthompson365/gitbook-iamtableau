@@ -44,3 +44,7 @@
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
 
+---
+
+* [Notes: Okta OAuth Integration](notes-okta-oauth-integration.md)
+
