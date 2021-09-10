@@ -36,6 +36,7 @@
 
 ---
 
+* [Notes: Okta OAuth Integration](notes-okta-oauth-integration.md)
 * [Notes: Azure Synapse](notes-azure-synapse.md)
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
 * [Notes: Terraform modules](notes-terraform-modules.md)
@@ -43,8 +44,4 @@
 ## Drafts
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
-
----
-
-* [Notes: Okta OAuth Integration](notes-okta-oauth-integration.md)
 
