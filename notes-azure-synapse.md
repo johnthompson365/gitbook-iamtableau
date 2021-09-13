@@ -35,6 +35,8 @@ data\_explorer WITH PASSWORD = 'My Very Strong Password that I like to use all t
 
 DataExplorationDB
 
+tab-synapses-ondemand.sql.azuresynapse.net
+
 ![](.gitbook/assets/image%20%2894%29.png)
 
 ### Tested Connecting with OAuth
