@@ -97,6 +97,10 @@ My current setting was for LegacyAuthProtocolsEnabled was set to True and I am a
 
 In Fiddler I receive the 403 and see a **X-Forms\_Based\_Auth\_Required** and the **X-MSDAVEXT\_Error** in the headers. So ensure that `SetSPOTenant -LegacyAuthProtocolsEnabled $True` for this connector to work.
 
+Another limitation of this connector is the lack of support for MFA. This is listed prominently on our help pages.
+
+> **Note:** Multi-factor authentication \(MFA\) is not supported by the drivers currently available for Sharepoint Lists.
+
 ### Useful reference
 
 [https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint](https://sharepoint.stackexchange.com/questions/222917/rest-authentication-to-online-sharepoint)
