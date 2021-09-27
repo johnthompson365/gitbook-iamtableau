@@ -10,6 +10,7 @@ description: Just to save Googling...
 | :--- | :--- |
 | Andrija Marcic Blog | [Tableau auth with SAML on Azure AD](https://medium.com/@tableauman/tableau-auth-with-saml-on-azure-ad-167e1d5daf4c) |
 | Andrija Marcic Blog | [Configuring Kerberos authentication on Tableau server running on Windows](https://medium.com/@tableauman/configuring-kerberos-authentication-on-tableau-server-1917d127b6e3) |
+| Andrija Marcic | [TableauAzureADSync](https://github.com/AndrijaMa/Tableau/tree/master/AdSync) |
 | Robin Cottiss Github | [https://github.com/geordielad/snowflake-oauth](https://github.com/geordielad/snowflake-oauth) |
 | Robin Cottiss Github | [https://github.com/geordielad/tableau-aws-cognito-integration](https://github.com/geordielad/tableau-aws-cognito-integration) |
 | Tableau Help | [Connect to Tableau Repository with Tableau Desktop](https://help.tableau.com/current/server/en-us/perf_collect_server_repo.htm) |
@@ -59,5 +60,5 @@ description: Just to save Googling...
 | PoshACME | [PowerShell ACME client to generate certificates using Lets Encrypt](https://github.com/rmbolger/Posh-ACME) |
 |  |  |
 
-General
+Scripts and Stuff
 
