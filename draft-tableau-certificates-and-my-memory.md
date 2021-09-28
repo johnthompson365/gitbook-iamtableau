@@ -20,8 +20,10 @@ For my lab I want the simplest configuration so want to be able to use the same 
 
 1. ...Confirm that the certificate includes only the certificate that applies to Tableau Server and not any other certificates or keys.
 2. SSL certificate chain file: A certificate chain file is required for Tableau Desktop on the Mac and for Tableau Prep Builder on the Mac and Tableau Prep Builder on Windows. The chain file is also required for the Tableau Mobile app if the certificate chain for Tableau Server is not trusted by the iOS or Android operating system on the mobile device.
-3. All certificate files must be valid PEM-encoded X509 certificates with the extension `.crt`.
-4. You must either use a PCKS\#1 \(no password\) or a PCKS\#8 \(with password\) as described [here](https://help.tableau.com/current/server/en-us/saml_requ.htm#certificate-and-identity-provider-idp-requirements). 
+   * **How to check:** open the certificate and check the certificates are in order or... `openssl crl2pkcs7 -nocrl -certfile $CERT_FILE | openssl pkcs7 -print_certs -noout3`
+3. You must either use a PCKS\#1 \(no password\) or a PCKS\#8 \(with password\) as described [here](https://help.tableau.com/current/server/en-us/saml_requ.htm#certificate-and-identity-provider-idp-requirements). 
+   * **How to check:** You can check the format of the key simply by opening it shown [here](https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key)
+4. All certificate files must be valid PEM-encoded X509 certificates with the extension `.crt`.
 
 If you are running Windows follow the Tutorial linked below to get your certificates:
 
@@ -43,9 +45,7 @@ If you are using Linux then knock yourself out and try [certbot](https://certbot
 You can just rename the `.cer` file to be `.crt` 
 {% endhint %}
 
-#### How to check:
-
-You can check the format of the key simply by opening it shown [here](https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key)
+#### 
 
 ## SiteSAML requirements
 
