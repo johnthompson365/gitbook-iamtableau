@@ -43,6 +43,10 @@ If you are using Linux then knock yourself out and try [certbot](https://certbot
 You can just rename the `.cer` file to be `.crt` 
 {% endhint %}
 
+#### How to check:
+
+You can check the format of the key simply by opening it shown [here](https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key)
+
 ## SiteSAML requirements
 
 I attempted to use the same Posh-ACME certificates for both the Server TLS and SAML. This worked without issue for Tableau Server-Wide SAML configuration. It did not work for Site SAML. I received the following error:
