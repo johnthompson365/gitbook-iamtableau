@@ -18,10 +18,10 @@ The two docs that give the full details are here:
 
 For my lab I want the simplest configuration so want to be able to use the same certificate for both the server **and** SAML. The relevant requirements for me are:
 
-1. ...if you want to use the same certificate for SSL and SAML, you must use a key file that is _not_ passphrase protected.
-2. ...Confirm that the certificate includes only the certificate that applies to Tableau Server and not any other certificates or keys.
-3. SSL certificate chain file: A certificate chain file is required for Tableau Desktop on the Mac and for Tableau Prep Builder on the Mac and Tableau Prep Builder on Windows. The chain file is also required for the Tableau Mobile app if the certificate chain for Tableau Server is not trusted by the iOS or Android operating system on the mobile device.
-4. All certificate files must be valid PEM-encoded X509 certificates with the extension `.crt`.
+1. ...Confirm that the certificate includes only the certificate that applies to Tableau Server and not any other certificates or keys.
+2. SSL certificate chain file: A certificate chain file is required for Tableau Desktop on the Mac and for Tableau Prep Builder on the Mac and Tableau Prep Builder on Windows. The chain file is also required for the Tableau Mobile app if the certificate chain for Tableau Server is not trusted by the iOS or Android operating system on the mobile device.
+3. All certificate files must be valid PEM-encoded X509 certificates with the extension `.crt`.
+4. You must either use a PCKS\#1 \(no password\) or a PCKS\#8 \(with password\) as described [here](https://help.tableau.com/current/server/en-us/saml_requ.htm#certificate-and-identity-provider-idp-requirements). 
 
 If you are running Windows follow the Tutorial linked below to get your certificates:
 
