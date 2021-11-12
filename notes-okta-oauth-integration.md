@@ -28,19 +28,19 @@ Interpolation `{{ }}` lets you render the property value as text.
 
 `{{ product.name }}`
 
-the `<a>` element around `{{ product.name }}` ****creates a hyperlink
+the `<a>` element around `{{ product.name }}`** **creates a hyperlink
 
-Property binding `[ ]` lets you use the property value in a template expression. eg. \[Title\]
+Property binding `[ ]` lets you use the property value in a template expression. eg. \[Title]
 
 `<a [title]="product.name + ' details'">`
 
 On a `<p>` element, use an `*`[`ngIf`](https://angular.io/api/common/NgIf) directive so that Angular only creates the `<p>` element if the current product has a description.
 
- `<p *`[`ngIf`](https://angular.io/api/common/NgIf)`="product.description"> Description: {{ product.description }} </p>`
+` <p *`[`ngIf`](https://angular.io/api/common/NgIf)`="product.description"> Description: {{ product.description }} </p>`
 
 Bind the button's `click` event to the `share()` method in `product-list.component.ts`
 
- `<button (click)="share()"> Share </button>`
+&#x20;`<button (click)="share()"> Share </button>`
 
 The share method is:
 
@@ -67,6 +67,4 @@ To make a new component available to other components in the app, in this case `
 git clone sample okta Angular app repo
 
 [Installing Node.js and NPM on mac](https://treehouse.github.io/installation-guides/mac/node-mac.html) - COMPLETE
-
-
 

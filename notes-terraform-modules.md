@@ -1,15 +1,15 @@
 # Notes: Terraform modules
 
-{% embed url="https://learn.hashicorp.com/tutorials/terraform/module?in=terraform/modules" caption="" %}
+{% embed url="https://learn.hashicorp.com/tutorials/terraform/module?in=terraform/modules" %}
 
 Some of the content is copied as my notes from the Terraform Modules Overview:
 
 "A Terraform module is a set of Terraform configuration files in a single directory. Even a simple configuration consisting of a single directory with one or more `.tf` files is a module. When you run Terraform commands directly from such a directory, it is considered the **root module**.
 
-1. Start writing your configuration with modules in mind. 
-2. Use local modules to organize and encapsulate your code. 
-3. Use the public Terraform Registry to find useful modules. 
-4. Publish and share modules with your team. 
+1. Start writing your configuration with modules in mind.&#x20;
+2. Use local modules to organize and encapsulate your code.&#x20;
+3. Use the public Terraform Registry to find useful modules.&#x20;
+4. Publish and share modules with your team.&#x20;
 
 _...we recommend that every Terraform configuration be created with the assumption that it may be used as a module, because doing so will help you design your configurations to be flexible, reusable, and composable._..."
 
@@ -21,7 +21,7 @@ Stored locally:
 
 ![The directory structure from my ](https://johnthompson365.com/wp-content/uploads/2020/12/image-16.png)
 
-## Terraform Files and how they relate to modules <a id="block-3e90f5e5-58b0-47c5-903c-60f79d1107fb"></a>
+## Terraform Files and how they relate to modules <a href="block-3e90f5e5-58b0-47c5-903c-60f79d1107fb" id="block-3e90f5e5-58b0-47c5-903c-60f79d1107fb"></a>
 
 ![](https://johnthompson365.com/wp-content/uploads/2020/12/image-18.png)
 
@@ -39,7 +39,7 @@ There are also some other files to be aware of, and ensure that you don't distri
 * [`.terraform`](https://learn.hashicorp.com/tutorials/terraform/module-create?in=terraform/modules#terraform): This directory contains the modules and plugins used to provision your infrastructure. These files are specific to a specific instance of Terraform when provisioning infrastructure, not the configuration of the infrastructure defined in `.tf` files.
 * [`*.tfvars`](https://learn.hashicorp.com/tutorials/terraform/module-create?in=terraform/modules#tfvars): Since module input variables are set via arguments to the `module` block in your configuration, you don't need to distribute any `*.tfvars` files with your module, unless you are also using it as a standalone Terraform configuration.
 
-**WHAT DOES THIS MEAN?**  
+**WHAT DOES THIS MEAN?**\
 Terraform loads all configuration files within a directory and appends them together, which means that any resources or providers with the same name in the same directory will cause a validation error. If you were to run a terraform command now, your `resource "random_pet"` and `provider "aws"` block could cause errors.
 
 In my example it means it appends any **.tf** files when applying. So if you create a **windows.tf** and **linux.tf** there can't be any resources or providers with the same name in them or you get complaints!
@@ -71,9 +71,10 @@ Now that your workspace handles the resources as individual environments, only o
 
 ![](https://johnthompson365.com/wp-content/uploads/2020/12/image-21.png)
 
+![](broken-reference)
+
 ## Create your own module
 
 I want to be able to deploy a Single Node Windows or Linux Tableau server.
 
 The simplest option seems to be using the directory structure so I can have **two separate .tf files** as there are some **different resources** required for each environment.
-
