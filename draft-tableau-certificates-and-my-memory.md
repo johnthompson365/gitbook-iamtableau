@@ -1,8 +1,8 @@
 ---
-description: How to use POSH-ACME certs with Tableau
+description: How to use POSH-ACME certs with Tableau and other tall tales.
 ---
 
-# Notes: Server & SAML Certificates and my memory
+# Tableau Server, SAML Certificates, namespaces and my memory...
 
 The instructions on certificate usage for Tableau server and SAML are not memorable to me. Not much is, so I need to write this stuff down.
 
@@ -97,8 +97,16 @@ Click Reset and go through the standard steps of uploading your certificate file
 
 {% embed url="https://help.tableau.com/current/server/en-us/ssl_config.htm#change-or-update-ssl-certificate" %}
 
-## Naming Considerations
+## Namespace Considerations
 
-Tableau clients that need to access the server can use [subject alternative names](https://help.tableau.com/current/server/en-us/ssl\_config.htm#ssl-certificate-requirements) defined in the certificate. So as long as you manage the DNS you can have different names for clients to initially connect to ([internal.example.com](http://internal.example.com), [external.example.com](http://external.example.com), [desktop.example.com](http://desktop.example.com)).&#x20;
+Tableau clients that need to access the server can use [subject alternative names](https://help.tableau.com/current/server/en-us/ssl\_config.htm#ssl-certificate-requirements) defined in the certificate. So as long as you manage the DNS you can have different names for clients to initially connect to ([internal.example.com](http://internal.example.com), [external.example.com](http://external.example.com), [desktop.example.com](http://desktop.example.com)) the server.&#x20;
 
-However, if you have configured SAML, then whatever you define as the SAML URLs (return URL and Entity ID) are what becomes the server URL once the client has logged on, for both internal and external users and… _if you plan to enable site-specific SAML later, this URL also serves as the base for each site’s unique ID._
+However, if you have configured SAML then whatever you define as the SAML URLs (return URL and Entity ID) are what becomes the Server URL once the client has logged on, for both internal and external users and… _if you plan to enable site-specific SAML later, this URL also serves as the base for each site’s unique ID._
+
+![Desktop me.](<.gitbook/assets/image (131).png>)
+
+__
+
+![SAML Uber Alles](.gitbook/assets/2021-11-12\_16-35-02.png)
+
+__

@@ -8,9 +8,9 @@
 * [Okta apps and Tableau](user-access/tableau-okta-saml-apps.md)
 * [Recipe: Azure AD and Tableau](user-access/recipe-azure-ad-saml-and-tableau-online.md)
 
----
+***
 
-* [Notes: Server & SAML Certificates and my memory](draft-tableau-certificates-and-my-memory.md)
+* [Tableau Server, SAML Certificates, namespaces and my memory...](draft-tableau-certificates-and-my-memory.md)
 
 ## DATA ACCESS
 
@@ -18,7 +18,7 @@
 
 ## Identity
 
----
+***
 
 * [sAMAccountName & userPrincipalName](samaccountname-and-upn.md)
 
@@ -34,7 +34,7 @@
 
 ## Notes
 
----
+***
 
 * [Notes: Okta OAuth Integration](notes-okta-oauth-integration.md)
 * [Notes: Azure Synapse](notes-azure-synapse.md)
@@ -44,4 +44,3 @@
 ## Drafts
 
 * [Draft: Kerberos Constrained Delegation](drafts/kerberos-constrained-delegation.md)
-
