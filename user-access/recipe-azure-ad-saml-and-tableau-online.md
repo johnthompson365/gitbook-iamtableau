@@ -40,7 +40,7 @@ As part of the SAML authentication flow attributes are passed between the IdP (A
 
 ### Configuration
 
-There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for First name and Last name or Full name.** **If they are not provided in the authN flow then the email address is used, so are actually optional.
+There are two main properties that TOL is interested in, your **Email** and **Display Name**. The Email attribute is mapped to the username in Tableau Online and must match a licensed user stored in the Tableau Server Repository. The Display Name maps to the Full Name field in Tableau Online, it is populated with the assertions for First name and Last name or Full name. **** If they are not provided in the authN flow then the email address is used, so are actually optional.
 
 ![](<../.gitbook/assets/image (68).png>)
 
@@ -184,10 +184,37 @@ I used an Azure AD created identity and it didn't have an `on-premisessAMAccount
 
 ![](<../.gitbook/assets/image (115).png>)
 
-## Provisioning
+## Provisioning: Tableau Online
+
+Azure AD is not currently a supported provisioning method to Tableau Online although it does work and is used by many customers. There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. Follow these steps to get up and running:
+
+{% embed url="https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial" %}
+Strong MSFT work...
+{% endembed %}
+
+It describes how you connect to TOL and what domain and account to use. Currently this needs to be a Site Administrator (Explorer or Publisher). We do not support PATs.  &#x20;
+
+### Settings
+
+![](<../.gitbook/assets/image (135).png>)
 
 ### Enterprise Applications
 
 You need to assign users/groups to the Azure AD application before they can sign in to the published app. The consideration below affects the use of nested AAD groups.
 
-![](<../.gitbook/assets/image (121).png>)
+![No nested groups... whaaaat?!](<../.gitbook/assets/image (121).png>)
+
+#### SiteRole
+
+This must be specified for all users and groups that you want to provision otherwise you can't assign them to the Enterprise Application.
+
+### Testing
+
+| Use case                                                        | Steps                                                                              | Expected Result                                                         |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Provision a single user with Site Role and AuthN                | Using default provisioning settings, add a user to the app and let auto sync work. | User provisioned with correct Site Role and AuthN method and logged in. |
+| Provision a single group with Site Role                         |                                                                                    |                                                                         |
+| Provision users from a nested group                             |                                                                                    |                                                                         |
+| Provision users from multiple groups using a group scope filter |                                                                                    |                                                                         |
+|                                                                 |                                                                                    |                                                                         |
+

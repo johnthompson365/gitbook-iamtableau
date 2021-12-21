@@ -28,7 +28,7 @@ Interpolation `{{ }}` lets you render the property value as text.
 
 `{{ product.name }}`
 
-the `<a>` element around `{{ product.name }}`** **creates a hyperlink
+the `<a>` element around `{{ product.name }}` **** creates a hyperlink
 
 Property binding `[ ]` lets you use the property value in a template expression. eg. \[Title]
 
@@ -36,7 +36,7 @@ Property binding `[ ]` lets you use the property value in a template expression.
 
 On a `<p>` element, use an `*`[`ngIf`](https://angular.io/api/common/NgIf) directive so that Angular only creates the `<p>` element if the current product has a description.
 
-` <p *`[`ngIf`](https://angular.io/api/common/NgIf)`="product.description"> Description: {{ product.description }} </p>`
+&#x20;`<p *`[`ngIf`](https://angular.io/api/common/NgIf)`="product.description"> Description: {{ product.description }} </p>`
 
 Bind the button's `click` event to the `share()` method in `product-list.component.ts`
 
