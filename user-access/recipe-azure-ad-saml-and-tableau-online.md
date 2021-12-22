@@ -8,14 +8,16 @@ description: 1kg of Azure AD, 500g of SAML, and 100g of TOL and 100g of TS
 
 Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works.&#x20;
 
+Update - 22nd December 2021: Added in a Provisioning section for Tableau Online.
+
 ## Features
 
-The two apps have a different feature sets. The Tableau Online application supports the following two features, whereas Tableau Server only supports SSO.
+The two Azure AD apps have different feature sets. The Tableau Online application supports the following two features, whereas Tableau Server only supports SSO.
 
 1. SP-initiated SSO
 2. _REST API user provisioning_
 
-Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout (SLO) is not possible due to our use of HTTP-Post bindings.
+Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout (SLO) is not possible due to the use of HTTP-Post bindings.
 
 #### M365 Developer Program
 
@@ -87,6 +89,8 @@ So you can select either `givenname` + `surname` OR `displayname`
 
 ### The Minimum!
 
+This is just a bit of an exercise in playing around with the configuration. Go to the [recommended](recipe-azure-ad-saml-and-tableau-online.md#the-recommended) section below for the real steps to follow!
+
 As it states in Azure, the only required claim is actually the Name ID. So I deleted all other for Name, Given Name etc.
 
 ![](<../.gitbook/assets/image (74).png>)
@@ -106,6 +110,10 @@ By deleting the 'name' claim URI from the setting in Tableau Online (shown below
 You can then login successfully with only relying on the name identifier, but you won't get any useful information like `First Name` and `Surname`.
 
 ### The Recommended!
+
+So first off you should always follow the Tableau guidance [here](https://help.tableau.com/current/online/en-us/saml\_config\_azure\_ad.htm#match-assertions) and match the assertions for Email, First name and Last name, or for Full name.&#x20;
+
+If you are trying to decide whether to use mail or UPN then consider the following:
 
 I am primarily interested in Enterprise organizations so consumer accounts are less of a consideration. In Azure AD and Microsoft 365 the `userPrincipalName` (UPN) is the attribute that is used to sign in to Office 365 services. Many organizations are likely to want to map that to the username in TOL as they know it is likely to change less than the email address. \
 \
@@ -144,7 +152,7 @@ Downloading the metadata file from Tableau Server and then uploading to Azure AD
 
 The claims we define in our docs are:
 
-![Our docs ask for this...](<../.gitbook/assets/image (114).png>)
+![](<../.gitbook/assets/image (136).png>)
 
 But if you go to the Server UI it asks you to match these assertions.
 
@@ -154,7 +162,7 @@ The default claims defined in the Azure AD app actually just work and shouldn't 
 
 ![The default Azure app gives you this...](<../.gitbook/assets/image (107).png>)
 
-When you look closer at the claims it also shows the Name ID which actually contradicts our docs, but again works.
+When you look closer at the claims it also shows the Name ID which actually contradicts the Tableau docs, but again works.
 
 ![](<../.gitbook/assets/image (116).png>)
 
@@ -163,12 +171,6 @@ These are the results from SAML trace for a successful login.
 ![](<../.gitbook/assets/image (113).png>)
 
 ![](<../.gitbook/assets/image (109).png>)
-
-### The Minimum!
-
-So I'll go through the same process again and get down to what is actually needed...
-
-
 
 ### Common setup issues...
 
@@ -191,7 +193,7 @@ Azure AD is not currently a supported provisioning method to Tableau Online alth
 If you want to test out a simple scenario then follow these steps to get up and running:
 
 {% embed url="https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial" %}
-Strong MSFT work...
+Strong MSFT doc...
 {% endembed %}
 
 ### Sync Account
@@ -205,8 +207,6 @@ With Azure AD you have a choice to make whether the Enterprise Application requi
 ![](<../.gitbook/assets/image (135) (1).png>)
 
 ### SiteRole
-
-My testing showed that users without a SiteRole configured failed to provision.&#x20;
 
 If you choose to assign groups to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
 
@@ -228,7 +228,7 @@ Azure AD provides scoping filters for both Users and Groups. Again they provide 
 
 This allows you to filter the Group objects that are provisioned/de-provisioned. Also, to filter the users based on attributes.
 
-![](<../.gitbook/assets/image (139).png>)
+![](<../.gitbook/assets/image (140).png>)
 
 
 
@@ -242,7 +242,7 @@ So for example. I defined  the scoping filters:
 
 #### Groups:
 
-![](<../.gitbook/assets/image (137).png>)
+![](<../.gitbook/assets/image (138).png>)
 
 #### **Result:**&#x20;
 
@@ -264,9 +264,9 @@ This following method was pioneered by a talented colleague and it requires some
 
 You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is simply done in the properties of the Enterprise App.
 
-![](<../.gitbook/assets/image (140).png>)
+![](<../.gitbook/assets/image (141).png>)
 
-As you are not assigning the groups, there is not an option for you to configure the SiteRole. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of Grant License on Sign In feature in Tableau.
+As you are not assigning the groups, there is not an option for you to configure the SiteRole. My testing showed that users without a SiteRole configured failed to provision. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of [Grant License on Sign In](https://help.tableau.com/current/online/en-us/grant\_role.htm) feature in Tableau.
 
 You can modify the Default Value to assign the users as Unlicensed in the Attribute Mappings for the _AppRoleAssignmentsComplex(\[appRoleAssignments]) ._ &#x20;
 
@@ -278,9 +278,9 @@ __![](<../.gitbook/assets/image (135).png>)__
 
 The 'id' is taken from the App Registration Manifest for the Tableau Online app in Azure AD. It refers to the 'id' of the Unlicensed user.
 
-![](<../.gitbook/assets/image (136).png>)
+![](<../.gitbook/assets/image (137).png>)
 
-Once the user is provisioned as Unlicensed you would need to configure the Group for Grant License on Sign In and to specify the minimum Site Role for the group. &#x20;
+Once the user is provisioned as Unlicensed you would need to configure the group for [Grant License on Sign In](recipe-azure-ad-saml-and-tableau-online.md#tableau-online-saml) and to specify the minimum Site Role for the group. &#x20;
 
 _NB: Also the mapping can be configured to 'Only apply during object creation'_
 
