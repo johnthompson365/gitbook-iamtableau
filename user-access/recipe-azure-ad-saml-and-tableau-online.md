@@ -186,35 +186,105 @@ I used an Azure AD created identity and it didn't have an `on-premisessAMAccount
 
 ## Provisioning: Tableau Online
 
-Azure AD is not currently a supported provisioning method to Tableau Online although it does work and is used by many customers. There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. Follow these steps to get up and running:
+Azure AD is not currently a supported provisioning method to Tableau Online although it does work and is used by many customers. There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. There are however a number of constraints and choices to make on how you provision users and groups.&#x20;
+
+If you want to test out a simple scenario then follow these steps to get up and running:
 
 {% embed url="https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial" %}
 Strong MSFT work...
 {% endembed %}
 
-It describes how you connect to TOL and what domain and account to use. Currently this needs to be a Site Administrator (Explorer or Publisher). We do not support PATs.  &#x20;
+### Sync Account
 
-### Settings
+The tutorial describes how you connect to your TOL site and what account to use. Currently the credentials required for the provisioning need to be a Site Administrator (Explorer or Publisher) in TOL. The Azure App does not support PATs.
 
-![](<../.gitbook/assets/image (135).png>)
+### Scope
 
-### Enterprise Applications
+With Azure AD you have a choice to make whether the Enterprise Application requires users to be assigned to it first (an additional step), or they can be provisioned directly from the Azure AD directory. ('Sync only assigned users and groups' OR 'Sync all users and groups'). I will mainly focus on the option where you assign the groups as this is the simplest method.
 
-You need to assign users/groups to the Azure AD application before they can sign in to the published app. The consideration below affects the use of nested AAD groups.
+![](<../.gitbook/assets/image (135) (1).png>)
+
+### SiteRole
+
+My testing showed that users without a SiteRole configured failed to provision.&#x20;
+
+If you choose to assign groups to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
+
+&#x20;![](<../.gitbook/assets/image (131).png>)
+
+
+
+### Nested Groups
+
+When you attempt to assign the group you are prompted with the message that users within nested AAD groups will not be provisioned, but the actual group will sync.
 
 ![No nested groups... whaaaat?!](<../.gitbook/assets/image (121).png>)
 
-#### SiteRole
+### Scoping Filters
 
-This must be specified for all users and groups that you want to provision otherwise you can't assign them to the Enterprise Application.
+Azure AD provides scoping filters for both Users and Groups. Again they provide a handy Tutorial.
 
-### Testing
+{% embed url="https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts" %}
 
-| Use case                                                        | Steps                                                                              | Expected Result                                                         |
-| --------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Provision a single user with Site Role and AuthN                | Using default provisioning settings, add a user to the app and let auto sync work. | User provisioned with correct Site Role and AuthN method and logged in. |
-| Provision a single group with Site Role                         |                                                                                    |                                                                         |
-| Provision users from a nested group                             |                                                                                    |                                                                         |
-| Provision users from multiple groups using a group scope filter |                                                                                    |                                                                         |
-|                                                                 |                                                                                    |                                                                         |
+This allows you to filter the Group objects that are provisioned/de-provisioned. Also, to filter the users based on attributes.
+
+![](<../.gitbook/assets/image (139).png>)
+
+
+
+It took me a bit of playing around with it to figure out the relationship between the two as the app refers to it as they way to "Define which users are in scope for provisioning" even on the scoping filter for groups! Basically they work **independently**. The group filter, filters the group objects in Tableau, and the user filter, filters the user objects. Obviously...
+
+So for example. I defined  the scoping filters:
+
+#### Users:
+
+![](<../.gitbook/assets/image (134).png>)
+
+#### Groups:
+
+![](<../.gitbook/assets/image (137).png>)
+
+#### **Result:**&#x20;
+
+Both filters are applied independently so that...
+
+All groups that matched 'AD' in their description are provisioned
+
+All users that are in 'Sales' are provisioned.&#x20;
+
+All users NOT in Sales are not provisioned even if they were in the scoped and provisioned Groups.
+
+These filters are very important if you go on to use the following configuration :point\_down:
+
+### Sync all users and groups
+
+{% hint style="info" %}
+This following method was pioneered by a talented colleague and it requires some skilled configuration. I haven't tested this thoroughly so can't confirm it works for all scenarios.&#x20;
+{% endhint %}
+
+You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is simply done in the properties of the Enterprise App.
+
+![](<../.gitbook/assets/image (140).png>)
+
+As you are not assigning the groups, there is not an option for you to configure the SiteRole. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of Grant License on Sign In feature in Tableau.
+
+You can modify the Default Value to assign the users as Unlicensed in the Attribute Mappings for the _AppRoleAssignmentsComplex(\[appRoleAssignments]) ._ &#x20;
+
+```
+{"id":"97f6d3e9-6e9f-415b-9578-f6aad1f95dae","displayName":"Unlicensed"}
+```
+
+__![](<../.gitbook/assets/image (135).png>)__
+
+The 'id' is taken from the App Registration Manifest for the Tableau Online app in Azure AD. It refers to the 'id' of the Unlicensed user.
+
+![](<../.gitbook/assets/image (136).png>)
+
+Once the user is provisioned as Unlicensed you would need to configure the Group for Grant License on Sign In and to specify the minimum Site Role for the group. &#x20;
+
+_NB: Also the mapping can be configured to 'Only apply during object creation'_
+
+{% hint style="info" %}
+_Additionally scoping filters are important otherwise you will  provision your whole directory without them!_
+{% endhint %}
 

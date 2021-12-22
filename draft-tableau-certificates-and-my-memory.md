@@ -103,7 +103,7 @@ Tableau clients that need to access the server can use [subject alternative name
 
 However, if you have configured SAML then whatever you define as the SAML URLs (return URL and Entity ID) are what becomes the Server URL once the client has logged on, for both internal and external users and… _if you plan to enable site-specific SAML later, this URL also serves as the base for each site’s unique ID._
 
-![Desktop me.](<.gitbook/assets/image (131).png>)
+![Desktop me.](<.gitbook/assets/image (131) (1).png>)
 
 __
 
