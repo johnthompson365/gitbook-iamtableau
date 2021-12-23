@@ -259,7 +259,7 @@ These filters are very important if you go on to use the following configuration
 ### Sync all users and groups
 
 {% hint style="info" %}
-This following method was pioneered by a talented colleague and it requires some skilled configuration. I haven't tested this thoroughly so can't confirm it works for all scenarios.&#x20;
+This following method was pioneered by a talented colleague and it requires some skilled configuration. I would advise testing this thoroughly as I can't confirm it works for all scenarios.&#x20;
 {% endhint %}
 
 You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is simply done in the properties of the Enterprise App.
@@ -282,9 +282,28 @@ The 'id' is taken from the App Registration Manifest for the Tableau Online app 
 
 Once the user is provisioned as Unlicensed you would need to configure the group for [Grant License on Sign In](recipe-azure-ad-saml-and-tableau-online.md#tableau-online-saml) and to specify the minimum Site Role for the group. &#x20;
 
-_NB: Also the mapping can be configured to 'Only apply during object creation'_
+#### Step by step
+
+1. Create a Azure AD Group
+2. Create a Azure AD User
+3. Add the AAD User to the AAD Group
+4. Configure Site Specific SAML
+5. Open the Azure AD Enterprise Application
+6. Go to Provisioning/Edit Provisioning
+7. Configure Admin Credentials and make sure the the account being used to connect to TOL is a Tableau Account
+8. Make sure that both Provision AAD Users and Provision AAD Groups is enabled
+9. Expand Mappings, select Provision Azure Active Directory Users
+10. Click AppRoleAssignmentsComplex(\[appRoleAssignments])
+11. Under Default Value if null add: {"id":"97f6d3e9-6e9f-415b-9578-f6aad1f95dae","displayName":"Unlicensed"}
+12. Click OK/ Save
+13. Expand Settings
+14. Set Scope to Sync All Users and Groups (you can use Source Object Scope to only sync users that contain a specific Azure AD Property)
+15. Start the sync
+16. You should see your AAD user that you created in step 2 and it should be Unlicensed,
+17. You should see your AAD group that you created in step 1 and it should contain one user (the user that you created in step 2),
+18. After the first sync go to TOL and configure GLSI with the appropriate Site Role for the AAD Group
+19. Login with your AAD user and confirm that you have been granted the correct Site Role
 
 {% hint style="info" %}
-_Additionally scoping filters are important otherwise you will  provision your whole directory without them!_
+_Scoping filters are important as you could provision your whole directory without them!_
 {% endhint %}
-
