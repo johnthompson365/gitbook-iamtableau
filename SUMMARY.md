@@ -26,6 +26,7 @@
 
 * [Unattended installs in Azure with Terraform](terraform/unattended-installs-in-azure.md)
 * [Notes: Terrazure next steps](terraform/terrazure-next-steps.md)
+* [Notes: Terraform modules](terraform/notes-terraform-modules.md)
 
 ## Useful Links
 
@@ -39,7 +40,6 @@
 * [Notes: Okta OAuth Integration](notes-okta-oauth-integration.md)
 * [Notes: Azure Synapse](notes-azure-synapse.md)
 * [Notes: Azure AD Domain Services](notes-azure-ad-domain-services.md)
-* [Notes: Terraform modules](notes-terraform-modules.md)
 
 ## Drafts
 
