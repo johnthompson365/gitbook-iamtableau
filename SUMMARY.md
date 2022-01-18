@@ -6,7 +6,7 @@
 
 * [Recipe: OneLogin with Tableau](user-access/recipe-onelogin-tableau.md)
 * [Okta apps and Tableau](user-access/tableau-okta-saml-apps.md)
-* [Recipe: Azure AD and Tableau](user-access/recipe-azure-ad-saml-and-tableau-online.md)
+* [Recipe: Azure AD and Tableau](user-access/recipe-azure-ad-and-tableau.md)
 
 ***
 

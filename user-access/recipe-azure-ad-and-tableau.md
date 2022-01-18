@@ -89,7 +89,7 @@ So you can select either `givenname` + `surname` OR `displayname`
 
 ### The Minimum!
 
-This is just a bit of an exercise in playing around with the configuration. Go to the [recommended](recipe-azure-ad-saml-and-tableau-online.md#the-recommended) section below for the real steps to follow!
+This is just a bit of an exercise in playing around with the configuration. Go to the [recommended](recipe-azure-ad-and-tableau.md#the-recommended) section below for the real steps to follow!
 
 As it states in Azure, the only required claim is actually the Name ID. So I deleted all other for Name, Given Name etc.
 
@@ -280,7 +280,7 @@ The 'id' is taken from the App Registration Manifest for the Tableau Online app 
 
 ![](<../.gitbook/assets/image (137).png>)
 
-Once the user is provisioned as Unlicensed you would need to configure the group for [Grant License on Sign In](recipe-azure-ad-saml-and-tableau-online.md#tableau-online-saml) and to specify the minimum Site Role for the group. &#x20;
+Once the user is provisioned as Unlicensed you would need to configure the group for [Grant License on Sign In](recipe-azure-ad-and-tableau.md#tableau-online-saml) and to specify the minimum Site Role for the group. &#x20;
 
 #### Step by step
 
