@@ -36,7 +36,7 @@ There are articles to configure the authentication steps. The Microsoft ones are
 [Configure SAML with Azure Active Directory](https://help.tableau.com/current/online/en-us/saml\_config\_azure\_ad.htm) (Tableau Online)\
 [Configure Server-Wide SAML](https://help.tableau.com/current/server/en-us/config\_saml.htm) (Tableau Server)
 
-## Tableau Online SAML
+## Tableau Online: SAML
 
 As part of the SAML authentication flow attributes are passed between the IdP (Azure) and the Service Provider (Tableau). Getting them right is key to a successful SSO.
 
@@ -138,55 +138,7 @@ You should advise your users to check the **Remember me** option when signing in
 
 As part of the Azure AD flow you are asked whether you want to stay signed in to the service. I would also ensure users to select this to prevent them having to input credentials again for an extended period of time.&#x20;
 
-## Tableau Server
-
-The Tableau Server Azure AD app supports SP-initiated sign on. You need to manage provisioning separately.
-
-### Configuration
-
-Downloading the metadata file from Tableau Server and then uploading to Azure AD simplifies the first steps in configuring the IdP. This gives you the correct URLs at least in my instance:
-
-![Your friendly URLs](<../.gitbook/assets/image (108).png>)
-
-### Do you have a claim?
-
-The claims we define in our docs are:
-
-![](<../.gitbook/assets/image (136).png>)
-
-But if you go to the Server UI it asks you to match these assertions.
-
-![The UI shows this...](<../.gitbook/assets/image (117).png>)
-
-The default claims defined in the Azure AD app actually just work and shouldn't require changing but include unnecessary claims.
-
-![The default Azure app gives you this...](<../.gitbook/assets/image (107).png>)
-
-When you look closer at the claims it also shows the Name ID which actually contradicts the Tableau docs, but again works.
-
-![](<../.gitbook/assets/image (116).png>)
-
-These are the results from SAML trace for a successful login.
-
-![](<../.gitbook/assets/image (113).png>)
-
-![](<../.gitbook/assets/image (109).png>)
-
-### Common setup issues...
-
-...or at least the mistakes that I made.
-
-1\) Remember to add your user to the App in Azure AD first.
-
-![](<../.gitbook/assets/image (112).png>)
-
-2\) Ensure that you use test it with an account that is synchronised from Active Directory.&#x20;
-
-I used an Azure AD created identity and it didn't have an `on-premisessAMAccountName` that matches the username in Tableau. So it didn't pass the username attribute as required by the Tableau server identity store and claims.
-
-![](<../.gitbook/assets/image (115).png>)
-
-## Provisioning: Tableau Online
+## Tableau Online: Provisioning
 
 Azure AD is not currently a supported provisioning method to Tableau Online although it does work and is used by many customers. There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. There are however a number of constraints and choices to make on how you provision users and groups.&#x20;
 
@@ -307,3 +259,53 @@ Once the user is provisioned as Unlicensed you would need to configure the group
 {% hint style="info" %}
 _Scoping filters are important as you could provision your whole directory without them!_
 {% endhint %}
+
+## Tableau Server: SAML
+
+The Tableau Server Azure AD app supports SP-initiated sign on. You need to manage provisioning separately.
+
+### Configuration
+
+Downloading the metadata file from Tableau Server and then uploading to Azure AD simplifies the first steps in configuring the IdP. This gives you the correct URLs at least in my instance:
+
+![Your friendly URLs](<../.gitbook/assets/image (108).png>)
+
+### Do you have a claim?
+
+The claims we define in our docs are:
+
+![](<../.gitbook/assets/image (136).png>)
+
+But if you go to the Server UI it asks you to match these assertions.
+
+![The UI shows this...](<../.gitbook/assets/image (117).png>)
+
+The default claims defined in the Azure AD app actually just work and shouldn't require changing but include unnecessary claims.
+
+![The default Azure app gives you this...](<../.gitbook/assets/image (107).png>)
+
+When you look closer at the claims it also shows the Name ID which actually contradicts the Tableau docs, but again works.
+
+![](<../.gitbook/assets/image (116).png>)
+
+These are the results from SAML trace for a successful login.
+
+![](<../.gitbook/assets/image (113).png>)
+
+![](<../.gitbook/assets/image (109).png>)
+
+### Common setup issues...
+
+...or at least the mistakes that I made.
+
+1\) Remember to add your user to the App in Azure AD first.
+
+![](<../.gitbook/assets/image (112).png>)
+
+2\) Ensure that you use test it with an account that is synchronised from Active Directory.&#x20;
+
+I used an Azure AD created identity and it didn't have an `on-premisessAMAccountName` that matches the username in Tableau. So it didn't pass the username attribute as required by the Tableau server identity store and claims.
+
+![](<../.gitbook/assets/image (115).png>)
+
+##
