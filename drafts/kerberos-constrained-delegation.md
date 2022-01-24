@@ -105,9 +105,21 @@ Useful notes in the [article](https://social.technet.microsoft.com/wiki/contents
 
 > Kerberos keytabs, also known as key table files, are only employed on non-Windows servers. In a homogenous Windows-only environment, keytabs will not ever be used, as the AD service account in conjunction with the Windows Registry and Windows security DLLs provide the Kerberos SSO foundation.
 
-We have a batch file that provides guidance on how to configure your keytab.
+
 
 {% embed url="https://help.tableau.com/current/server/en-us/kerberos_keytab.htm#batch-file-set-spn-and-create-keytab-in-active-directory" %}
+
+With Tableau it is important to understand the purpose and use case for the keytab file. We have 3 separate uses of the keytab file.
+
+1. Operating system - which I would refer to as User Authentication&#x20;
+2. Directory Service - read-access to your AD/LDAP
+3. Datasource delegation - accessing data sources that have kerberos authentication enabled
+
+We have a batch file that provides guidance on how to configure your keytab.
+
+{% embed url="https://docs.microsoft.com/en-us/archive/blogs/pie/all-you-need-to-know-about-keytab-files?_fsi=JnpHaLWS" %}
+Great article &#x20;
+{% endembed %}
 
 ```
 ktpass /princ http/tableau-win2016.thompson365.com@thompson365.com -SetUPN /mapuser thompson365\<tableau runas account> /pass <user password> /crypto AES256-SHA1 /ptype KRB5_NT_PRINCIPAL /out tableau.keytab
@@ -115,8 +127,9 @@ ktpass /princ http/tableau-win2016.thompson365.com@thompson365.com -SetUPN /mapu
 
 ![](<../.gitbook/assets/image (55).png>)
 
-\*\*\*\*[https://docs.microsoft.com/en-us/archive/blogs/pie/all-you-need-to-know-about-keytab-files?\_fsi=JnpHaLWS](https://docs.microsoft.com/en-us/archive/blogs/pie/all-you-need-to-know-about-keytab-files?\_fsi=JnpHaLWS)\
-[https://social.technet.microsoft.com/wiki/contents/articles/36470.active-directory-using-kerberos-keytabs-to-integrate-non-windows-systems.aspx](https://social.technet.microsoft.com/wiki/contents/articles/36470.active-directory-using-kerberos-keytabs-to-integrate-non-windows-systems.aspx)
+{% embed url="https://social.technet.microsoft.com/wiki/contents/articles/36470.active-directory-using-kerberos-keytabs-to-integrate-non-windows-systems.aspx" %}
+Useful write-up with good additional links
+{% endembed %}
 
 ## Browser IWA
 
