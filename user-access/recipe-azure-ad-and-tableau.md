@@ -156,7 +156,7 @@ The tutorial describes how you connect to your TOL site and what account to use.
 
 With Azure AD you have a choice to make whether the Enterprise Application requires users to be assigned to it first (an additional step), or they can be provisioned directly from the Azure AD directory. ('Sync only assigned users and groups' OR 'Sync all users and groups'). I will mainly focus on the option where you assign the groups as this is the simplest method.
 
-![](<../.gitbook/assets/image (135) (1).png>)
+![](<../.gitbook/assets/image (135) (1) (1).png>)
 
 ### SiteRole
 
@@ -226,7 +226,7 @@ You can modify the Default Value to assign the users as Unlicensed in the Attrib
 {"id":"97f6d3e9-6e9f-415b-9578-f6aad1f95dae","displayName":"Unlicensed"}
 ```
 
-__![](<../.gitbook/assets/image (135).png>)__
+__![](<../.gitbook/assets/image (135) (1).png>)__
 
 The 'id' is taken from the App Registration Manifest for the Tableau Online app in Azure AD. It refers to the 'id' of the Unlicensed user.
 
