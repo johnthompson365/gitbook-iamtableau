@@ -168,7 +168,10 @@ If you are already using the previous REST API app then [follow these steps](htt
 
 ### Scope
 
-With Azure AD you have a choice to make whether the Enterprise Application requires users to be assigned to it first (an additional step), or they can be provisioned directly from the Azure AD directory. ('Sync only assigned users and groups' OR 'Sync all users and groups'). I will mainly focus on the option where you assign the groups as this is the simplest method.
+There are really 2 modes of operation for provisioning with Azure AD, which is configured in the 'Settings' part of the provisioning configuration.&#x20;
+
+1. **Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
+2. **Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use scoping filters to only provision those required to Tableau.&#x20;
 
 ![](<../.gitbook/assets/image (135) (1) (1).png>)
 
