@@ -1,14 +1,16 @@
 ---
-description: 1kg of Azure AD, 500g of SAML, and 100g of TOL and 100g of TS
+description: 1kg of Azure AD, 500g of SAML, and 100g of TCL and 50g of TS
 ---
 
 # Recipe: Azure AD and Tableau
 
 ## Scope
 
-Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Server and Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works.&#x20;
+Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works.&#x20;
 
 Update - 22nd December 2021: Added in a Provisioning section for Tableau Online.
+
+Update - 5th August 2022: Updated Provisioning Section to include the latest [Tableau SCIM integration](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm)&#x20;
 
 ## Features
 
@@ -18,6 +20,8 @@ The two Azure AD apps have different feature sets. The Tableau Online applicatio
 2. _REST API user provisioning_
 
 Neither apps support [IdP-initiated sign-on](https://duo.com/blog/the-beer-drinkers-guide-to-saml). This means that if you publish the app in the Azure MyApps portal it will still do an SP-initiated Authentication request and therefore have the usual browser redirections for that flow. Also, SP-Initiated Single Logout (SLO) is not possible due to the use of HTTP-Post bindings.
+
+## How to test it yourself
 
 #### M365 Developer Program
 
@@ -69,11 +73,11 @@ We ask for the Email attribute in the configuration which in turn is used as the
 
     `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`.
 
-It is not possible to map directly to the UPN claim as that is one of the [restricted claim sets ](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping#claim-sets)in Azure AD. These _can't be modified using policy. The data source cannot be changed, and no transformation is applied when generating these claims_. So in this instance that is why the Name claim is used instead.
+It is not possible to map directly to the UPN claim as that is one of the [restricted claim sets ](https://docs.microsoft.com/en-us/azure/active-directory/develop/reference-saml-tokens)in Azure AD. These _can't be modified using policy. The data source cannot be changed, and no transformation is applied when generating these claims_. So in this instance that is why the Name claim is used instead.
 
 > UPDATE: There is a lot of new functionality in preview for Azure AD to allow you to create claim types that was previously restricted. [How to: Customize claims emitted in tokens for a specific app in a tenant (Preview)](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-claims-mapping)
 
-You can choose to map `mail` or`userPrincipalName` as the `Email` in TOL. However as there isn't a separate email address attribute in TOL whatever is defined as `Email` must be a working email address as that value is what will be used to send out the subscriptions you have setup to views or workbooks.
+You can choose to map `mail` or`userPrincipalName` as the `Email` in TCL. However as there isn't a separate email address attribute in TCL whatever is defined as `Email` must be a working email address as that value is what will be used to send out the subscriptions you have setup to views or workbooks.
 
 ![Workbook subscriptions](<../.gitbook/assets/image (69).png>)
 
@@ -140,7 +144,15 @@ As part of the Azure AD flow you are asked whether you want to stay signed in to
 
 ## Tableau Online: Provisioning
 
-Azure AD is not currently a supported provisioning method to Tableau Online although it does work and is used by many customers. There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. There are however a number of constraints and choices to make on how you provision users and groups.&#x20;
+Azure AD is a fully supported provisioning method to Tableau Online and has a SCIM integration. Earlier versions of the Azure AD app relied on the Tableau REST API.&#x20;
+
+The benefits of the SCIM integration over the REST API are:
+
+* Industry standard SCIM integration
+* A user can be a member of multiple groups in Azure, but they will only receive the most permissive site role in Tableau Online. For example, if a user is a member of two groups with site roles Viewer and Creator, Tableau will assign the Creator site role.
+* Removes the need for a named user account to sync users/groups and supports a bearer token for authentication
+
+There is a good tutorial from Microsoft that describes how to configure Azure AD provisioning which works by integrating with our REST API. There are however a number of constraints and choices to make on how you provision users and groups.&#x20;
 
 If you want to test out a simple scenario then follow these steps to get up and running:
 
@@ -148,9 +160,11 @@ If you want to test out a simple scenario then follow these steps to get up and 
 Strong MSFT doc...
 {% endembed %}
 
-### Sync Account
+### Update your Tableau Cloud application to use the Tableau Cloud SCIM 2.0 endpoint <a href="#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint" id="update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint"></a>
 
-The tutorial describes how you connect to your TOL site and what account to use. Currently the credentials required for the provisioning need to be a Site Administrator (Explorer or Publisher) in TOL. The Azure App does not support PATs.
+If you are already using the previous REST API app then [follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint) to migrate over and benefit from the SCIM features.
+
+
 
 ### Scope
 
