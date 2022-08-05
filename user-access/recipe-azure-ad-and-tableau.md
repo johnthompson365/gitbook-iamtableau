@@ -308,11 +308,11 @@ These are the results from SAML trace for a successful login.
 
 ![](<../.gitbook/assets/image (109).png>)
 
-### Common setup issues...
+## Common setup issues...
 
 ...or at least the mistakes that I made.
 
-1\) Remember to add your user to the App in Azure AD first.
+1\) Remember to assign your user to the App in Azure AD first if you have "Sync only assigned users and groups" :smile:
 
 ![](<../.gitbook/assets/image (112).png>)
 
