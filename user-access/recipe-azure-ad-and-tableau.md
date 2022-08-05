@@ -171,7 +171,7 @@ If you are already using the previous REST API app then [follow these steps](htt
 There are really 2 modes of operation for provisioning with Azure AD, which is configured in the 'Settings' part of the provisioning configuration.&#x20;
 
 1. **Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
-2. **Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use scoping filters to only provision those required to Tableau.&#x20;
+2. **Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
 
 ![Choose wisely](<../.gitbook/assets/image (1).png>)
 
@@ -197,11 +197,7 @@ Azure AD provides scoping filters for both Users and Groups. Again they provide 
 
 This allows you to filter the Group objects that are provisioned/de-provisioned. Also, to filter the users based on attributes.
 
-![](<../.gitbook/assets/image (140).png>)
-
-
-
-It took me a bit of playing around with it to figure out the relationship between the two as the app refers to it as they way to "Define which users are in scope for provisioning" even on the scoping filter for groups! Basically they work **independently**. The group filter, filters the group objects in Tableau, and the user filter, filters the user objects. Obviously...
+It took me a bit of playing around with it to figure out the relationship between the two as the app refers to it as a way to "Define which users are in scope for provisioning". Basically they work **independently**. The group filter, filters the group objects in Tableau, and the user filter, filters the user objects. It's obvious now...
 
 So for example. I defined  the scoping filters:
 
@@ -221,21 +217,37 @@ All groups that matched 'AD' in their description are provisioned
 
 All users that are in 'Sales' are provisioned.&#x20;
 
-All users NOT in Sales are not provisioned even if they were in the scoped and provisioned Groups.
+All users NOT in Sales are not provisioned even if they were members of the scoped and provisioned Groups.
 
 These filters are very important if you go on to use the following configuration :point\_down:
 
 ### Sync all users and groups
 
+As you are not assigning the groups, there is not an option for you to configure the SiteRole.&#x20;
+
+
+
+
+
+
+
+
+
+#### LEGACY REST API CONFIGURATION:
+
+
+
+`You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is done in the properties of the Enterprise App.`
+
+![](<../.gitbook/assets/image (141).png>)
+
+
+
 {% hint style="info" %}
 This following method was pioneered by a talented colleague and it requires some skilled configuration. I would advise testing this thoroughly as I can't confirm it works for all scenarios.&#x20;
 {% endhint %}
 
-You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is simply done in the properties of the Enterprise App.
-
-![](<../.gitbook/assets/image (141).png>)
-
-As you are not assigning the groups, there is not an option for you to configure the SiteRole. My testing showed that users without a SiteRole configured failed to provision. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of [Grant License on Sign In](https://help.tableau.com/current/online/en-us/grant\_role.htm) feature in Tableau.
+My testing showed that users without a SiteRole configured failed to provision. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of [Grant License on Sign In](https://help.tableau.com/current/online/en-us/grant\_role.htm) feature in Tableau.
 
 You can modify the Default Value to assign the users as Unlicensed in the Attribute Mappings for the _AppRoleAssignmentsComplex(\[appRoleAssignments]) ._ &#x20;
 
