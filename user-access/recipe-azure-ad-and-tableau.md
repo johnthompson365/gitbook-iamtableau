@@ -177,7 +177,7 @@ There are really 2 modes of operation for provisioning with Azure AD, which is c
 
 ### SiteRole
 
-If you choose to assign groups to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
+If you choose to **Sync only assigned users and groups** to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
 
 &#x20;![](<../.gitbook/assets/image (131).png>)
 
@@ -233,7 +233,7 @@ As you are not assigning the groups, there is not an option for you to configure
 
 
 
-#### LEGACY REST API CONFIGURATION:
+#### LEGACY REST API CONFIGURATION TO BE UPDATED/REMOVED:
 
 
 
