@@ -105,6 +105,8 @@ However I have seen some customers not use a chain file at all. It is easy to do
 
 `openssl crl2pkcs7 -nocrl -certfile $CERT_FILE | openssl pkcs7 -print_certs -noout3`
 
+Your Certificate Authority should have provided a chain certificate so if you only have the server certificate either reach back out to your CA or whoever manages it.
+
 ## Updating your certificate
 
 Click Reset and go through the standard steps of uploading your certificate files (cert, key and chain) to TSM. Yes, it needs a restart.
