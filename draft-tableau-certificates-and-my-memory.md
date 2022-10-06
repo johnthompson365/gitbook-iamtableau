@@ -75,7 +75,7 @@ Useful docs reference docs I found were PKCS formats are:
 [https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key\
 ](https://www.misterpki.com/pkcs8/)
 
-### ISSUE: Certificate file not uploading
+## ISSUE: Certificate file not uploading
 
 I attempted to update the cert.key a few times using the SAML configuration tsm command
 
@@ -88,6 +88,22 @@ However, when I checked the key file I found it was updating even though TSM sai
 ![](<.gitbook/assets/image (128).png>)
 
 A quick workaround was to just copy over the file to the location shown above and restart services. Not sure how supported that is but worked for me!
+
+## ISSUE: SSLHandshakeException
+
+I have seen this error a few times.&#x20;
+
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Remember the guidance from :point\_up:
+
+If you are using the Tableau clients you need a Certificate Chain file. That means that your certificate file should not only include the server certificate but also the intermediate certificate.&#x20;
+
+We have a KB article to follow [here](https://kb.tableau.com/articles/en\_US/Issue/ssl-handshake-exception-or-pkix-path-building-failed-upon-signing-in-tableau-server-from-tableau-prep-or-tableau-desktop) which solves the problem of converting from pem to crt.&#x20;
+
+However I have seen some customers not use a chain file at all. It is easy to do a basic check of this by just opening the file and checking the 2 certs match the distinct server and intermediate files. Or you can use a slightly more scientific method that I list above as well:
+
+`openssl crl2pkcs7 -nocrl -certfile $CERT_FILE | openssl pkcs7 -print_certs -noout3`
 
 ## Updating your certificate
 

@@ -173,7 +173,7 @@ There are really 2 modes of operation for provisioning with Azure AD, which is c
 1. **Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
 2. **Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
 
-![Choose wisely](<../.gitbook/assets/image (1).png>)
+![Choose wisely](<../.gitbook/assets/image (1) (1).png>)
 
 ### SiteRole
 
