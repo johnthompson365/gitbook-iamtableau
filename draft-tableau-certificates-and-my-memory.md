@@ -99,7 +99,7 @@ Remember the guidance from :point\_up:
 
 If you are using the Tableau clients you need a Certificate Chain file. That means that your certificate file should not only include the server certificate but also the intermediate certificate.&#x20;
 
-We have a KB article to follow [here](https://kb.tableau.com/articles/en\_US/Issue/ssl-handshake-exception-or-pkix-path-building-failed-upon-signing-in-tableau-server-from-tableau-prep-or-tableau-desktop) which solves the problem of converting from pem to crt.&#x20;
+It can have a different root causes. We have a KB article to follow [here](https://kb.tableau.com/articles/en\_US/Issue/ssl-handshake-exception-or-pkix-path-building-failed-upon-signing-in-tableau-server-from-tableau-prep-or-tableau-desktop) which solves if the problem is from converting .pem to .crt.&#x20;
 
 However I have seen some customers not use a chain file at all. It is easy to do a basic check of this by just opening the file and checking the 2 certs match the distinct server and intermediate files. Or you can use a slightly more scientific method that I list above as well:
 
