@@ -172,16 +172,24 @@ The update process uses the Graph API to DELETE the current provisioning configu
 
 There are really 2 modes of operation for provisioning with Azure AD, which is configured in the 'Settings' part of the provisioning configuration.&#x20;
 
-1. **Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
-2. **Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
+1. **SUPPORTED: Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
+2. **NOT VIABLE: Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
 
-![Choose wisely](<../.gitbook/assets/image (1) (1).png>)
+<mark style="color:red;">It is important to ensure you DO NOT use 'Sync all users and groups' this is not a viable method of provisioning for Tableau.</mark>
+
+<mark style="color:red;"></mark>
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ### SiteRole
 
 If you choose to **Sync only assigned users and groups** to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
 
-&#x20;![](<../.gitbook/assets/image (131).png>)
+Take note of [our documentation ](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm#create-groups-for-site-roles)as despite there being 13 different roles in the list only 5 are workable. _Creator_, _SiteAdministratorCreator_, _Explorer_, _SiteAdministratorExplorer_, _Viewer_, or _Unlicensed_.
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+
+&#x20;
 
 
 
@@ -193,7 +201,7 @@ When you attempt to assign the group you are prompted with the message that user
 
 ### Scoping Filters
 
-Azure AD provides scoping filters for both Users and Groups. Again they provide a handy Tutorial.
+Azure AD provides scoping filters for both Users and Groups. Again they provide a handy Tutorial. You can use Scoping Filters even when you _'Sync assigned user and groups'._
 
 {% embed url="https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/define-conditional-rules-for-provisioning-user-accounts" %}
 
@@ -220,76 +228,6 @@ All groups that matched 'AD' in their description are provisioned
 All users that are in 'Sales' are provisioned.&#x20;
 
 All users NOT in Sales are not provisioned even if they were members of the scoped and provisioned Groups.
-
-These filters are very important if you go on to use the following configuration :point\_down:
-
-### Sync all users and groups
-
-As you are not assigning the groups, there is not an option for you to configure the SiteRole.&#x20;
-
-
-
-
-
-
-
-
-
-#### LEGACY REST API CONFIGURATION TO BE UPDATED/REMOVED:
-
-
-
-`You can investigate using the method to 'Sync all users and groups' directly from Azure AD. You have to configure the Enterprise App away from the defaults. You will need to change 'Assignment Required' to No which is done in the properties of the Enterprise App.`
-
-![](<../.gitbook/assets/image (141).png>)
-
-
-
-{% hint style="info" %}
-This following method was pioneered by a talented colleague and it requires some skilled configuration. I would advise testing this thoroughly as I can't confirm it works for all scenarios.&#x20;
-{% endhint %}
-
-My testing showed that users without a SiteRole configured failed to provision. This can be done with a rule but it only allows for a single Default Value to be set. In this instance it is chosen to be Unlicensed to take advantage of [Grant License on Sign In](https://help.tableau.com/current/online/en-us/grant\_role.htm) feature in Tableau.
-
-You can modify the Default Value to assign the users as Unlicensed in the Attribute Mappings for the _AppRoleAssignmentsComplex(\[appRoleAssignments]) ._ &#x20;
-
-```
-{"id":"97f6d3e9-6e9f-415b-9578-f6aad1f95dae","displayName":"Unlicensed"}
-```
-
-__![](<../.gitbook/assets/image (135) (1).png>)__
-
-The 'id' is taken from the App Registration Manifest for the Tableau Online app in Azure AD. It refers to the 'id' of the Unlicensed user.
-
-![](<../.gitbook/assets/image (137).png>)
-
-Once the user is provisioned as Unlicensed you would need to configure the group for [Grant License on Sign In](recipe-azure-ad-and-tableau.md#tableau-online-saml) and to specify the minimum Site Role for the group. &#x20;
-
-#### Step by step
-
-1. Create a Azure AD Group
-2. Create a Azure AD User
-3. Add the AAD User to the AAD Group
-4. Configure Site Specific SAML
-5. Open the Azure AD Enterprise Application
-6. Go to Provisioning/Edit Provisioning
-7. Configure Admin Credentials and make sure the the account being used to connect to TOL is a Tableau Account
-8. Make sure that both Provision AAD Users and Provision AAD Groups is enabled
-9. Expand Mappings, select Provision Azure Active Directory Users
-10. Click AppRoleAssignmentsComplex(\[appRoleAssignments])
-11. Under Default Value if null add: {"id":"97f6d3e9-6e9f-415b-9578-f6aad1f95dae","displayName":"Unlicensed"}
-12. Click OK/ Save
-13. Expand Settings
-14. Set Scope to Sync All Users and Groups (you can use Source Object Scope to only sync users that contain a specific Azure AD Property)
-15. Start the sync
-16. You should see your AAD user that you created in step 2 and it should be Unlicensed,
-17. You should see your AAD group that you created in step 1 and it should contain one user (the user that you created in step 2),
-18. After the first sync go to TOL and configure GLSI with the appropriate Site Role for the AAD Group
-19. Login with your AAD user and confirm that you have been granted the correct Site Role
-
-{% hint style="info" %}
-_Scoping filters are important as you could provision your whole directory without them!_
-{% endhint %}
 
 ## Tableau Server: SAML
 

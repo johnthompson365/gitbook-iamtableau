@@ -93,7 +93,7 @@ A quick workaround was to just copy over the file to the location shown above an
 
 I have seen this error a few times.&#x20;
 
-<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 Remember the guidance from :point\_up:
 
