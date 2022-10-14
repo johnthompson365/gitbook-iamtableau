@@ -40,7 +40,7 @@ There are articles to configure the authentication steps. The Microsoft ones are
 [Configure SAML with Azure Active Directory](https://help.tableau.com/current/online/en-us/saml\_config\_azure\_ad.htm) (Tableau Online)\
 [Configure Server-Wide SAML](https://help.tableau.com/current/server/en-us/config\_saml.htm) (Tableau Server)
 
-## Tableau Online: SAML
+## Tableau Cloud: SAML
 
 As part of the SAML authentication flow attributes are passed between the IdP (Azure) and the Service Provider (Tableau). Getting them right is key to a successful SSO.
 
@@ -142,7 +142,7 @@ You should advise your users to check the **Remember me** option when signing in
 
 As part of the Azure AD flow you are asked whether you want to stay signed in to the service. I would also ensure users to select this to prevent them having to input credentials again for an extended period of time.&#x20;
 
-## Tableau Online: Provisioning
+## Tableau Cloud: Provisioning
 
 Azure AD is a fully supported provisioning method to Tableau Online and has a SCIM integration. Earlier versions of the Azure AD app relied on the Tableau REST API.&#x20;
 
