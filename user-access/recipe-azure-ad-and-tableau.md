@@ -8,9 +8,13 @@ description: 1kg of Azure AD, 500g of SAML, and 100g of TCL and 50g of TS
 
 Microsoft provides Azure AD apps that can be used to simplify the integration between Tableau Online and Azure AD. The goal is to create a good onboarding and user experience to the Tableau services. It  explains the attributes required by the service to authenticate and plays around with the configuration to demonstrate how it works.&#x20;
 
+#### Change Log
+
 Update - 22nd December 2021: Added in a Provisioning section for Tableau Online.
 
 Update - 5th August 2022: Updated Provisioning Section to include the latest [Tableau SCIM integration](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm)&#x20;
+
+Update - 14th October 2022: Further SCIM updates
 
 ## Features
 
