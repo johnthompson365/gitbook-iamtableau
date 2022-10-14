@@ -172,8 +172,8 @@ The update process uses the Graph API to DELETE the current provisioning configu
 
 There are really 2 modes of operation for provisioning with Azure AD, which is configured in the 'Settings' part of the provisioning configuration.&#x20;
 
-1. **SUPPORTED: Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
-2. **NOT VIABLE: Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
+1. <mark style="color:green;">**SUPPORTED:**</mark>** Sync only assigned users and groups:** You pre-assign users and groups to the Azure AD Enterprise application to be included in the scope of provisioning and those are sync'ed to Tableau
+2. <mark style="color:red;">**NOT VIABLE:**</mark>** Sync all users and groups:** You allow all users and groups in Azure AD to be within scope of the Azure AD Enterprise Application provisioning and then proceed to use [Scoping Filters](recipe-azure-ad-and-tableau.md#scoping-filters) to only provision those required to Tableau.&#x20;
 
 <mark style="color:red;">It is important to ensure you DO NOT use 'Sync all users and groups' this is not a viable method of provisioning for Tableau.</mark>
 
@@ -183,9 +183,11 @@ There are really 2 modes of operation for provisioning with Azure AD, which is c
 
 ### SiteRole
 
-If you choose to **Sync only assigned users and groups** to the Azure AD application before they can be provisioned then you have the option to define the SiteRole within Tableau. This is the default SiteRole for the group. This is the simplest method for assigning Site Roles to Tableau groups tested and known results.
+If you choose to **Sync only assigned users and groups** to the Azure AD application before they can be provisioned then you have the option to define the SiteRole for Tableau. This is the default SiteRole for the group and is the simplest method for assigning Site Roles to Tableau groups.
 
-Take note of [our documentation ](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm#create-groups-for-site-roles)as despite there being 13 different roles in the list only 5 are workable. _Creator_, _SiteAdministratorCreator_, _Explorer_, _SiteAdministratorExplorer_, _Viewer_, or _Unlicensed_.
+Take note of [our documentation ](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm#create-groups-for-site-roles)as despite there being 13 different roles presented in the Azure UI (below) in the list only 5 are workable (highlighted). _Creator_, _SiteAdministratorCreator_, _Explorer_, _SiteAdministratorExplorer_, _Viewer_, or _Unlicensed_.
+
+[Microsoft advises ](https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#valid-tableau-site-role-values)If you select a role that is not in the below list, such as a legacy (pre-v2018.1) role, you will experience an error.
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
@@ -207,9 +209,9 @@ Azure AD provides scoping filters for both Users and Groups. Again they provide 
 
 This allows you to filter the Group objects that are provisioned/de-provisioned. Also, to filter the users based on attributes.
 
-It took me a bit of playing around with it to figure out the relationship between the two as the app refers to it as a way to "Define which users are in scope for provisioning". Basically they work **independently**. The group filter, filters the group objects in Tableau, and the user filter, filters the user objects. It's obvious now...
+It took me a bit of playing around with it to figure out the relationship between the two as the app refers to it as a way to "Define which users are in scope for provisioning". Basically they work **independently**. The group filter, filters the group objects in Tableau, and the user filter, filters the user objects. It's blooming obvious now...
 
-So for example. I defined  the scoping filters:
+So for example. I defined the scoping filters:
 
 #### Users:
 
@@ -223,11 +225,9 @@ So for example. I defined  the scoping filters:
 
 Both filters are applied independently so that...
 
-All groups that matched 'AD' in their description are provisioned
-
-All users that are in 'Sales' are provisioned.&#x20;
-
-All users NOT in Sales are not provisioned even if they were members of the scoped and provisioned Groups.
+* All groups that matched 'AD' in their description are provisioned
+* All users that are in 'Sales' are provisioned.&#x20;
+* All users NOT in Sales are not provisioned even if they were members of the scoped and provisioned Groups.
 
 ## Tableau Server: SAML
 
