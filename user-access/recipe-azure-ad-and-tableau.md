@@ -162,7 +162,9 @@ Strong MSFT doc...
 
 ### Update your Tableau Cloud application to use the Tableau Cloud SCIM 2.0 endpoint <a href="#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint" id="update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint"></a>
 
-If you are already using the previous REST API app then [follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint) to migrate over and benefit from the SCIM features.
+If you are already using the previous REST API app then [follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint) to migrate over and benefit from the SCIM features. Points to note:
+
+The update process uses the Graph API to DELETE the current provisioning configuration of the sync that was using the REST API. You then POST the update in the next step that calls the SCIM endpoint. It requires broad permissions on the Graph API (**Directory.ReadWrite.All)** so I would  only be applying this using a specific admin account and revert the permissions after the change.
 
 
 
