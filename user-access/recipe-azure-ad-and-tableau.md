@@ -160,6 +160,8 @@ If you want to test out a simple scenario then follow these steps to get up and 
 Strong MSFT doc...
 {% endembed %}
 
+The following points are my take on the things to look out for with the integration...
+
 ### Update your Tableau Cloud application to use the Tableau Cloud SCIM 2.0 endpoint <a href="#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint" id="update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint"></a>
 
 If you are already using the previous REST API app then [follow these steps](https://docs.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#update-a-tableau-cloud-application-to-use-the-tableau-cloud-scim-20-endpoint) to migrate over and benefit from the SCIM features. Points to note:
@@ -191,9 +193,9 @@ Take note of [our documentation ](https://help.tableau.com/current/online/en-us/
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-&#x20;
+### Grant License on Sign In
 
-
+This feature is not supported by any of the SCIM integrations with Tableau.&#x20;
 
 ### Nested Groups
 
