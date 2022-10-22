@@ -72,22 +72,97 @@ Useful docs reference docs I found were PKCS formats are:
 
 [https://www.misterpki.com/pkcs8/ ](https://www.misterpki.com/pkcs8/)
 
-[https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key\
-](https://www.misterpki.com/pkcs8/)
+[https://stackoverflow.com/questions/48958304/pkcs1-and-pkcs8-format-for-rsa-private-key](https://www.misterpki.com/pkcs8/)
 
-## ISSUE: Certificate file not uploading
 
-I attempted to update the cert.key a few times using the SAML configuration tsm command
 
-`tsm authentication saml configure --idp-entity-id  https://tabwin-tfvm.developatribe.com --idp-return-url https://tabwin-tfvm.developatribe.com --cert-file cert.crt --key-file nopasscert.key`&#x20;
+## Independent Gateway Requirements
 
-However, when I checked the key file I found it was updating even though TSM said the file upload was successful.
+### Benefits and Considerations
 
-![](<.gitbook/assets/image (129).png>)
+The Tableau Server Independent Gateway (TSIG) is a reverse proxy server and simple load balancer based on Apache _HTTPd_. The benefits of it are:
 
-![](<.gitbook/assets/image (128).png>)
+* Can be deployed in DMZ or separate network segment to your Tableau Servers
+* It is managed by TSM so is Tableau Cluster aware
+* Supports multiple instances for HA
 
-A quick workaround was to just copy over the file to the location shown above and restart services. Not sure how supported that is but worked for me!
+The guidance for Enterprise customers is that as TSIG only supports Round Robin load balancing it is not designed as an Enterprise load balancing service so you should front the gateway with one if you require.&#x20;
+
+### Design Choices
+
+Focusing on the purpose of this article is describe the need or nuances for TLS and Certificates with Tableau Server Independent Gateway (TSIG).&#x20;
+
+With TSIG there is a decision to make about whether to enforce end-to-end encryption or terminate TLS at the gateway. The considerations are listed [here](https://help.tableau.com/current/guides/enterprise-deployment/en-us/edg\_part5.htm#independent-gateway-direct-vs-relay-connection):
+
+* **Direct Connection:** The traffic flow must have the TLS terminated at the TSIG direct and then http sent to the Tableau Server background processes. It has less hops but is not encrypted end-to-end and requires a number of ports being opened.&#x20;
+* **Relay Connection:** The traffic flow goes from TSIG to the Server Gateway process and then to the backend processes. This is an additional but only requires a single port for operations to be opened and you get end-to-end encryption.
+
+### Certificate Requirements
+
+Please refer to the official specific guidance for TSIG Certificate Requirements article is [here](https://help.tableau.com/current/server/en-us/server\_tsig\_configure\_tls.htm#certificate-requirements-and-considerations)
+
+But the main thing to remember is...
+
+_**The certificate requirements for Independent Gateway are the same as those specified for Tableau Server "external SSL."**_
+
+So you just need to follow the normal articles [above](draft-tableau-certificates-and-my-memory.md#tableau-official-guidance).
+
+* Chain certificate for 'thick clients' etc... which is explained in this [KB](https://kb.tableau.com/articles/HowTo/configure-tls-on-independent-gateway-when-using-intermediate-certificate) for TSIG
+
+
+
+
+
+### Configuration
+
+There is an extensive article that walks through the TLS Requirements and configuration for TLS to each part of the topology ultimately providing end-end encryption if you need it. [Configure TLS on Independent Gateway](https://help.tableau.com/current/server/en-us/server\_tsig\_configure\_tls.htm)
+
+There are three points of TLS configuration:
+
+* From the external network (internet or front-end load balancer) to Independent Gateway
+* From Independent Gateway to Tableau Server
+* For housekeeping (HK) process from Tableau Server to Independent Gateway
+
+Here is a detailed example of [how to configure TLS for TSIG in the Tableau Enterprise Deployment Guide in AWS](https://help.tableau.com/current/guides/enterprise-deployment/en-us/edg\_part6.htm#configure-ssltls-from-load-balancer-to-tableau-server)
+
+### Considerations
+
+| Consideration                                                                                                                                                                         | Solution                                                                                                                                                                                                                                                                                |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TSM does not automatically distribute certificate and key material to Independent Gateway nodes.                                                                                      | Manually copy the certificate and separate key files to each relevant gateway server. Secure the permissions to the key files so that only _tsig-http_ service has read-only access. Ensure it is saved outside of _TSIG\_INSTALL_ and _TSIG\_DATA_ paths to avoid overwrite on upgrade |
+| As with all TLS-related files on Independent Gateway computers, you must put the files in the same paths on each computer. All file names for TLS shared files must also be the same. | Define a consistent path for each TSIG                                                                                                                                                                                                                                                  |
+| If you want end-to-end encryption and use a Private PKI then the Root CA is needed on Tableau Server                                                                                  | Copy Root CA file to each Tableau Server                                                                                                                                                                                                                                                |
+|                                                                                                                                                                                       |                                                                                                                                                                                                                                                                                         |
+
+&#x20;
+
+Additionally, Independent Gateway does not automatically provide a way to supply the optional TLS key passphrase on startup.
+
+
+
+
+
+
+
+## Updating your certificate
+
+Click Reset and go through the standard steps of uploading your certificate files (cert, key and chain) to TSM. Yes, it needs a restart.
+
+![](<.gitbook/assets/image (130).png>)
+
+## Namespace Considerations
+
+{% embed url="https://help.tableau.com/current/server/en-us/ssl_config.htm#change-or-update-ssl-certificate" %}
+
+Tableau clients that need to access the server can use [subject alternative names](https://help.tableau.com/current/server/en-us/ssl\_config.htm#ssl-certificate-requirements) defined in the certificate. So as long as you manage the DNS you can have different names for clients to initially connect to ([internal.example.com](http://internal.example.com/), [external.example.com](http://external.example.com/), [desktop.example.com](http://desktop.example.com/)) the server.&#x20;
+
+However, if you have configured SAML then whatever you define as the SAML URLs (return URL and Entity ID) are what becomes the Server URL once the client has logged on, for both internal and external users and… _if you plan to enable site-specific SAML later, this URL also serves as the base for each site’s unique ID._
+
+![Desktop me.](<.gitbook/assets/image (131) (1).png>)
+
+__
+
+![SAML Uber Alles](.gitbook/assets/2021-11-12\_16-35-02.png)
 
 ## ISSUE: SSLHandshakeException
 
@@ -107,24 +182,18 @@ However I have seen some customers not use a chain file at all. It is easy to do
 
 Your Certificate Authority should have provided a chain certificate so if you only have the server certificate either reach back out to your CA or whoever manages it.
 
-## Updating your certificate
 
-Click Reset and go through the standard steps of uploading your certificate files (cert, key and chain) to TSM. Yes, it needs a restart.
 
-![](<.gitbook/assets/image (130).png>)
+## ISSUE: Certificate file not uploading
 
-{% embed url="https://help.tableau.com/current/server/en-us/ssl_config.htm#change-or-update-ssl-certificate" %}
+I attempted to update the cert.key a few times using the SAML configuration tsm command
 
-## Namespace Considerations
+`tsm authentication saml configure --idp-entity-id  https://tabwin-tfvm.developatribe.com --idp-return-url https://tabwin-tfvm.developatribe.com --cert-file cert.crt --key-file nopasscert.key`&#x20;
 
-Tableau clients that need to access the server can use [subject alternative names](https://help.tableau.com/current/server/en-us/ssl\_config.htm#ssl-certificate-requirements) defined in the certificate. So as long as you manage the DNS you can have different names for clients to initially connect to ([internal.example.com](http://internal.example.com/), [external.example.com](http://external.example.com/), [desktop.example.com](http://desktop.example.com/)) the server.&#x20;
+However, when I checked the key file I found it was updating even though TSM said the file upload was successful.
 
-However, if you have configured SAML then whatever you define as the SAML URLs (return URL and Entity ID) are what becomes the Server URL once the client has logged on, for both internal and external users and… _if you plan to enable site-specific SAML later, this URL also serves as the base for each site’s unique ID._
+![](<.gitbook/assets/image (129).png>)
 
-![Desktop me.](<.gitbook/assets/image (131) (1).png>)
+![](<.gitbook/assets/image (128).png>)
 
-__
-
-![SAML Uber Alles](.gitbook/assets/2021-11-12\_16-35-02.png)
-
-__
+A quick workaround was to just copy over the file to the location shown above and restart services. Not sure how supported that is but worked for me!
