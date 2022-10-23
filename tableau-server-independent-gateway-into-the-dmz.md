@@ -2,7 +2,7 @@
 description: Proxy me!
 ---
 
-# Tableau Server Independent Gateway (TSIG) into the DMZ
+# Tableau Server Independent Gateway into the DMZ
 
 ## Introduction
 
@@ -36,7 +36,7 @@ But the main thing to remember is...
 
 _**The certificate requirements for Independent Gateway are the same as those specified for Tableau Server "external SSL."**_
 
-So you just need to follow the normal articles [above](tableau-server-independent-gateway-tsig-into-the-dmz.md#tableau-official-guidance).
+So you just need to follow the normal articles [above](tableau-server-independent-gateway-into-the-dmz.md#tableau-official-guidance).
 
 * Chain certificate for 'thick clients' etc... which is explained in this [KB](https://kb.tableau.com/articles/HowTo/configure-tls-on-independent-gateway-when-using-intermediate-certificate) for TSIG
 
@@ -64,7 +64,6 @@ Here is a detailed example of [how to configure TLS for TSIG in the Tableau Ente
 | If you have enabled TLS with external network and Independent Gateway, you may use the same certificate and key files for the HK connection                                                                                                                     | Single Certificate, Keys and Root CA can be used for External to TSIG and HK to TSIG connections.                                                                                                                                                                                       |
 | You can configure Mutual TLS between the TSIG and Tableau Servers, and the House Keeping Services and the TSIG.                                                                                                                                                 | Enable the configuration on both TSIG (`gateway.tsig.ssl.client_certificate_login.required`) and Tableau Server (g`ateway.tsig.ssl.proxy.machinecertificatefile`) and the HK (`gateway.tsig.hk.ssl.client_certificate_login.required`)                                                  |
 | TSIG does not automatically provide a way to supply the optional TLS key passphrase on startup.                                                                                                                                                                 | Use the TSM config key  _`gateway.tsig.ssl.key.passphrase.dialog` to_ specify the passphrase for the key                                                                                                                                                                                |
-| HK port by default is 21319                                                                                                                                                                                                                                     | Can be left, or configured using a batch file (old skool) `C:\Program Files\Tableau\Tableau Server\independentgateway\scripts\initialize-tsig.bat`                                                                                                                                      |
 
 &#x20;
 
