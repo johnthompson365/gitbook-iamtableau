@@ -11,6 +11,7 @@
 ***
 
 * [Tableau Server, SAML Certificates, namespaces and my memory...](draft-tableau-certificates-and-my-memory.md)
+* [Tableau Server Independent Gateway (TSIG) into the DMZ](tableau-server-independent-gateway-tsig-into-the-dmz.md)
 
 ## DATA ACCESS
 
