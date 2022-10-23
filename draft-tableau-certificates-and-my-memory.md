@@ -85,6 +85,7 @@ The Tableau Server Independent Gateway (TSIG) is a reverse proxy server and simp
 * Can be deployed in DMZ or separate network segment to your Tableau Servers
 * It is managed by TSM so is Tableau Cluster aware
 * Supports multiple instances for HA
+* Supports Mutual TLS&#x20;
 
 The guidance for Enterprise customers is that as TSIG only supports Round Robin load balancing it is not designed as an Enterprise load balancing service so you should front the gateway with one if you require.&#x20;
 
