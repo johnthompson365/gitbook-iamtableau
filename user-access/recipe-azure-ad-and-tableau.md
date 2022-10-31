@@ -191,9 +191,9 @@ There are really 2 modes of operation for provisioning with Azure AD, which is c
 
 If you choose to **Sync only assigned users and groups** to the Azure AD application before they can be provisioned then you have the option to define the SiteRole for Tableau. This is the default SiteRole for the group and is the simplest method for assigning Site Roles to Tableau groups.
 
-Take note of [our documentation ](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm#create-groups-for-site-roles)as despite there being 13 different roles presented in the Azure UI (below) in the list only 5 are workable (highlighted). _Creator_, _SiteAdministratorCreator_, _Explorer_, _SiteAdministratorExplorer_, _Viewer_, or _Unlicensed_.
+Take note of [our documentation ](https://help.tableau.com/current/online/en-us/scim\_config\_azure\_ad.htm#create-groups-for-site-roles)as despite 13 different roles presented in the Azure UI (below) only specific ones are workable and I have found this to depend upon the Azure tenant.&#x20;
 
-[Microsoft advises ](https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#valid-tableau-site-role-values)If you select a role that is not in the below list, such as a legacy (pre-v2018.1) role, you will experience an error.
+[Microsoft advises ](https://learn.microsoft.com/en-us/azure/active-directory/saas-apps/tableau-online-provisioning-tutorial#valid-tableau-site-role-values)If you select a role that is not in the below list, such as a legacy (pre-v2018.1) role, you will experience an error. _Creator_, _SiteAdministratorCreator_, _Explorer_, _SiteAdministratorExplorer_, _ExplorerCanPublish_, _Viewer_, or _Unlicensed_. However I noticed an issue with assigning _Explorer (Can Publish)_ in my tenant. If you do then please contact Azure AD support.
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
